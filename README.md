@@ -208,3 +208,18 @@ php artisan make:controller FullCalenderController
 ```
 
 -  then create ```fullcalender.blade.php``` file and run the project ```http://localhost:8000/fullcalender```
+
+
+## Yajra Datatable
+
+- php 8.4 version is not work on Yajra Datatable.so run Yajra Datatable on php 8.3 version.
+- Install Yajra Datatable via the Composer package manager ```composer require yajra/laravel-datatables```
+- Create table,model,controller,view and add route
+- create some dummy users using Tinker Factory:
+
+```
+php artisan tinker
+User::factory()->count(20)->create()
+```
+
+- Run ```http://localhost:8000/users```

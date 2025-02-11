@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FullCalenderController;
+use App\Http\Controllers\DatatableController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,5 +43,7 @@ Route::controller(FullCalenderController::class)->group(function(){
     Route::get('fullcalender', 'index');
     Route::post('fullcalenderAjax', 'ajax');
 });
+
+Route::get('datatables', [DatatableController::class, 'index'])->name('datatables.index');
 
 require __DIR__.'/auth.php';
