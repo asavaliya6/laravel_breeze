@@ -181,3 +181,17 @@ IP_API_TOKEN=null
 ```
 * * * * * cd /path-to-project & php artisan schedule:run >> /dev/null 2>&1
 ```
+
+## Simple CRUD
+
+- Create Migration ```php artisan make:migration create_posts_table --create=posts``` ```php artisan migrate```
+
+- Create Form Request Validation Class ```php artisan make:request PosttStoreRequest``` ```php artisan make:request PostUpdateRequest```
+
+- Create Controller and Model ```php artisan make:controller PosttController --resource --model=Post``` ```php artisan make:model Post```
+
+- Update => routes/web.php && => app/Provides/AppServiceProvider.php
+ 
+- Add Blade Files => layout.blade.php index.blade.php create.blade.php edit.blade.php show.blade.
+
+- Run App ```php artisan serve``` ```http://localhost:8000/posts```

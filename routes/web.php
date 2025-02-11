@@ -8,6 +8,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -34,5 +35,5 @@ Route::middleware(['auth', 'role:agent'])->group(function(){
 Route::get('send-mail', [MailController::class, 'index']);
 Route::get('user-notify', [UserController::class, 'index']);
 Route::get('address', [AddressController::class, 'index']);
-
+Route::resource('posts', PostController::class);
 require __DIR__.'/auth.php';
