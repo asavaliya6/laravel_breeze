@@ -164,3 +164,20 @@ IP_API_TOKEN=null
 
 - Create Blade File => resources/views/address.blade.php
 - Run App ```php artisan serve``` ```http://localhost:8000/address```
+
+## Cron Job Task Scheduling
+
+- The custom command will execute with task scheduling using cron job. ```php artisan make:command DemoCron --command=demo:cron```
+
+- Define commands in the console.php file with the time when to run command ```Schedule::command('demo:cron')->everyMinute();```
+
+- Ready to run cron, so manually check using the command of cron ```php artisan schedule:run```
+
+- After running the command, check the log file where already printed some text So open log file => storage/logs/laravel.php
+
+- Install crontab on the server ```crontab -e```
+- Add line in file : 
+
+```
+* * * * * cd /path-to-project & php artisan schedule:run >> /dev/null 2>&1
+```
