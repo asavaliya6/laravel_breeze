@@ -195,3 +195,16 @@ IP_API_TOKEN=null
 - Add Blade Files => layout.blade.php index.blade.php create.blade.php edit.blade.php show.blade.
 
 - Run App ```php artisan serve``` ```http://localhost:8000/posts```
+
+## Full Calender with ajax
+
+- Create Migration,Model,Controller and Update route:
+
+```
+php artisan make:migration create_events_table
+php artisan migrate
+php artisan make:model Event
+php artisan make:controller FullCalenderController
+```
+
+-  then create ```fullcalender.blade.php``` file and run the project ```http://localhost:8000/fullcalender```

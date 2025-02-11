@@ -9,6 +9,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FullCalenderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +37,10 @@ Route::get('send-mail', [MailController::class, 'index']);
 Route::get('user-notify', [UserController::class, 'index']);
 Route::get('address', [AddressController::class, 'index']);
 Route::resource('posts', PostController::class);
+
+Route::controller(FullCalenderController::class)->group(function(){
+    Route::get('fullcalender', 'index');
+    Route::post('fullcalenderAjax', 'ajax');
+});
+
 require __DIR__.'/auth.php';
