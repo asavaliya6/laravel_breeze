@@ -115,3 +115,25 @@ php artisan passport:install
 7. Get a single product: GET http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token}
 8. Update a product: PUT http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token} - Content-Type: application/json
 9. Delete a product: DELETE http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token}
+
+
+## Send Email using queue with smtp
+
+- First enable 2-step varification on gmail then configure .env file :
+
+```
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=mygoogle@gmail.com
+MAIL_PASSWORD=rrnnucvnqlbsl
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=mygoogle@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+- Create Mail Class ```php artisan make:mail DemoMail```
+- Create Controller ```php artisan make:controller MailController```
+- Create Routes => routes/web.php
+- Create Blade View => resources/views/emails/demoMail.blade.php
+- Run App ```php artisan serve``` ```http://localhost:8000/send-mail```
