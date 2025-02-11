@@ -77,15 +77,15 @@ php artisan passport:install
 
 - Test the API :
 
-1. Register: POST /api/passport/register
-2. Login: POST /api/passport/login
-3. Get User: GET /api/passport/user   Authorization: Bearer {token}
-4. Logout: POST /api/passport/logout   Authorization: Bearer {token}
-5. Get all products: GET /api/passport/products   Authorization: Bearer {token}
-6. Create a product: POST /api/passport/products   Authorization: Bearer {token} - Content-Type: application/json
-7. Get a single product: GET /api/passport/products/{id}   Authorization: Bearer {token}
-8. Update a product: PUT /api/passport/products/{id}   Authorization: Bearer {token} - Content-Type: application/json
-9. Delete a product: DELETE /api/passport/products/{id}   Authorization: Bearer {token}
+1. Register: POST http://127.0.0.1:8000/api/passport/register
+2. Login: POST http://127.0.0.1:8000/api/passport/login
+3. Get User: GET http://127.0.0.1:8000/api/passport/user   Authorization: Bearer {token}
+4. Logout: POST http://127.0.0.1:8000/api/passport/logout   Authorization: Bearer {token}
+5. Get all products: GET http://127.0.0.1:8000/api/passport/products   Authorization: Bearer {token}
+6. Create a product: POST http://127.0.0.1:8000/api/passport/products   Authorization: Bearer {token} - Content-Type: application/json
+7. Get a single product: GET http://127.0.0.1:8000/api/passport/products/{id}   Authorization: Bearer {token}
+8. Update a product: PUT http://127.0.0.1:8000/api/passport/products/{id}   Authorization: Bearer {token} - Content-Type: application/json
+9. Delete a product: DELETE http://127.0.0.1:8000/api/passport/products/{id}   Authorization: Bearer {token}
 
 ## JWT Authentication API
 
@@ -106,12 +106,12 @@ php artisan passport:install
 
 - Test the API :
 
-1. Register: POST /api/jwt/register
-2. Login: POST /api/jwt/login
-3. Get User: GET /api/jwt/user   Authorization: Bearer {token}
-4. Logout: POST /api/jwt/logout   Authorization: Bearer {token}
-5. Get all products: GET /api/jwt/products   Authorization: Bearer {token}
-6. Create a product: POST /api/jwt/products   Authorization: Bearer {token} - Content-Type: application/json
-7. Get a single product: GET /api/jwt/products/{id}   Authorization: Bearer {token}
-8. Update a product: PUT /api/jwt/products/{id}   Authorization: Bearer {token} - Content-Type: application/json
-9. Delete a product: DELETE /api/jwt/products/{id}   Authorization: Bearer {token}
+1. Register: POST http://127.0.0.1:8000/api/jwt/register
+2. Login: POST http://127.0.0.1:8000/api/jwt/login
+3. Get User: GET http://127.0.0.1:8000/api/jwt/user   Authorization: Bearer {token}
+4. Logout: POST http://127.0.0.1:8000/api/jwt/logout   Authorization: Bearer {token}
+5. Get all products: GET http://127.0.0.1:8000/api/jwt/products   Authorization: Bearer {token}
+6. Create a product: POST http://127.0.0.1:8000/api/jwt/products   Authorization: Bearer {token} - Content-Type: application/json
+7. Get a single product: GET http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token}
+8. Update a product: PUT http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token} - Content-Type: application/json
+9. Delete a product: DELETE http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token}
