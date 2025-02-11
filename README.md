@@ -147,3 +147,20 @@ MAIL_FROM_NAME="${APP_NAME}"
 - Create Route => routes/web.php
 - Create Controller ```php artisan make:controller UserController```
 - Run app ```php artisan serve``` ```http://localhost:8000/user-notify```
+
+## Get User Location using IP Address
+
+- First install php-curl in latest version : ```sudo apt update``` ```php -v``` ```sudo apt install php8.4-curl``` ```php -m | grep curl``` ```sudo systemctl restart apache2```
+- Install the stevebauman/location package for getting the current location of the logged-in user ```composer require stevebauman/location```
+- Publish Configuration File ```php artisan vendor:publish --provider="Stevebauman\Location\LocationServiceProvider"```
+- Create Route => routes/web.php
+- Create Controller ```php artisan make:controller AddressController```
+- Update .env :
+
+```
+LOCATION_TESTING=false
+IP_API_TOKEN=null
+```
+
+- Create Blade File => resources/views/address.blade.php
+- Run App ```php artisan serve``` ```http://localhost:8000/address```
