@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,5 +31,6 @@ Route::middleware(['auth', 'role:agent'])->group(function(){
 });
 
 Route::get('send-mail', [MailController::class, 'index']);
+Route::get('user-notify', [UserController::class, 'index']);
 
 require __DIR__.'/auth.php';

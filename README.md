@@ -137,3 +137,13 @@ MAIL_FROM_NAME="${APP_NAME}"
 - Create Routes => routes/web.php
 - Create Blade View => resources/views/emails/demoMail.blade.php
 - Run App ```php artisan serve``` ```http://localhost:8000/send-mail```
+
+## Send Email Via Notification
+
+- Create Migration ```php artisan make:migration add_birthdate_column``` ```php artisan migrate```
+
+- Update Model => app/Models/User.php
+- Create Notification ```php artisan make:notification BirthdayWish```
+- Create Route => routes/web.php
+- Create Controller ```php artisan make:controller UserController```
+- Run app ```php artisan serve``` ```http://localhost:8000/user-notify```
