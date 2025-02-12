@@ -11,6 +11,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\DatatableController;
+use App\Http\Controllers\LanguageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,5 +46,14 @@ Route::controller(FullCalenderController::class)->group(function(){
 });
 
 Route::get('datatables', [DatatableController::class, 'index'])->name('datatables.index');
+
+Route::middleware(['setlocale'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    Route::get('lang', [LanguageController::class, 'change'])->name("change.lang");
+});
+
 
 require __DIR__.'/auth.php';

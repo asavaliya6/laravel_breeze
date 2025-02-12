@@ -223,3 +223,12 @@ User::factory()->count(20)->create()
 ```
 
 - Run ```http://localhost:8000/users```
+
+
+## Localization
+
+- Use localization  ```php artisan lang:publish```
+- Define Language Messages => lang/en/messages.php => lang/gu/messages.php => lang/hi/messages.php
+- Create a middleware to set current locale language ```php artisan make:middleware SetLocale```
+- Register the SetLocale middleware to the => bootstrap/app.php
+- Create route,controller and update blade file then run project.
