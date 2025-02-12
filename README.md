@@ -269,3 +269,17 @@ User::factory()->count(20)->create()
 - Create a middleware to set current locale language ```php artisan make:middleware SetLocale```
 - Register the SetLocale middleware to the => bootstrap/app.php
 - Create route,controller and update blade file then run project.
+
+## Scout elastic search with Algolia driver
+
+- Install the Scout package ```composer require laravel/scout```
+
+- publish configuration file ```php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"```
+
+- Set the configuration database as the driver in .env file ```SCOUT_DRIVER=database```
+
+- Install algolia composer package for driver ```composer require algolia/algoliasearch-client-php```
+
+- Update Usermodel,create controller and add route
+- Import Records: ```php artisan scout:import "App\Models\User"```
+ - Run the app ```http://localhost:8000/users```
