@@ -55,5 +55,6 @@ Route::middleware(['setlocale'])->group(function () {
     Route::get('lang', [LanguageController::class, 'change'])->name("change.lang");
 });
 
+Route::get('users', [UserController::class, 'index']);
 
 require __DIR__.'/auth.php';
