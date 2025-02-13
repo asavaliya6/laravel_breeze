@@ -15,6 +15,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HighchartController;
 use App\Http\Controllers\DateController;
+use App\Http\Controllers\NoteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -67,5 +68,9 @@ Route::get('chart', [HighchartController::class, 'index']);
 
 Route::get('/date-format', [DateController::class, 'changeDateFormat']);
 Route::get('/date-blade', [DateController::class, 'showDateInBlade']);
+
+Route::get('/create-note', [NoteController::class, 'create']);
+Route::get('/update-note/{id}', [NoteController::class, 'update']);
+Route::get('/delete-note/{id}', [NoteController::class, 'delete']);
 
 require __DIR__.'/auth.php';

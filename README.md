@@ -328,7 +328,77 @@ php -m | grep imagick
 - Highcharts JS is a popular JavaScript charting library 
 - Create Controller,Route,Blade file and run.
 
-# Change Date Format
+## Change Date Format
 
 - Create Controller,Blade file,Route and update user model
 - Run ```http://127.0.0.1:8000/date-format``` ```http://127.0.0.1:8001/date-blade``` 
+
+## Model Events
+
+- Provides with retrieved, creating, created, updating, updated, saving, saved, deleting, deleted, trashed, forceDeleting, forceDeleted, restoring, restored, and replicating model events to work with Eloquent models.
+
+- Create model and migration ```php artisan make:model Note -m``` ```php artisan migrate```
+
+- Create Controller ```php artisan make:controller NoteController``` and add route
+
+- Run to Server:
+
+1. Create a Post ```http://127.0.0.1:8000/create-note```
+
+- Display Output (JSON Response):
+
+```
+{
+    "id": 1,
+    "title": "Laravel 11 Model Events",
+    "slug": "laravel-11-model-events",
+    "body": "Testing model events in Laravel 11.",
+    "created_at": "2025-02-13T10:00:00.000000Z",
+    "updated_at": "2025-02-13T10:00:00.000000Z"
+}
+```
+
+2. Update a Post ```http://127.0.0.1:8000/update-note/1```
+
+- Display Output (JSON Response):
+
+```
+{
+    "id": 1,
+    "title": "Updated Laravel 11 Title",
+    "slug": "updated-laravel-11-title",
+    "body": "Updated body content",
+    "created_at": "2025-02-13T10:00:00.000000Z",
+    "updated_at": "2025-02-13T10:05:00.000000Z"
+}
+```
+
+3. Delete a Post ```http://127.0.0.1:8000/delete-note/1```
+
+- Display Output (JSON Response):
+
+```
+{
+    "message": "Post deleted successfully"
+}
+```
+
+- Check Logs on Terminal:
+
+```
+tail -f storage/logs/laravel.log
+```
+
+- Display Output (JSON Response):
+
+```
+[2025-02-13 10:00:00] local.INFO: Creating event called: {"title":"Laravel 11 Model Events","body":"Testing model events in Laravel 11."}
+[2025-02-13 10:00:00] local.INFO: Created event called: {"id":1,"title":"Laravel 11 Model Events","slug":"laravel-11-model-events","body":"Testing model events in Laravel 11."}
+[2025-02-13 10:05:00] local.INFO: Updating event called: {"id":1,"title":"Updated Laravel 11 Title","slug":"updated-laravel-11-title","body":"Updated body content"}
+[2025-02-13 10:05:00] local.INFO: Updated event called: {"id":1,"title":"Updated Laravel 11 Title","slug":"updated-laravel-11-title","body":"Updated body content"}
+[2025-02-13 10:10:00] local.INFO: Deleting event called: {"id":1,"title":"Updated Laravel 11 Title","slug":"updated-laravel-11-title","body":"Updated body content"}
+[2025-02-13 10:10:00] local.INFO: Deleted event called: {"id":1,"title":"Updated Laravel 11 Title","slug":"updated-laravel-11-title","body":"Updated body content"}
+```
+
+- Use php artisan migrate:refresh --seed to reset the database.
+- If logs don’t appear, ensure LOG_CHANNEL=stack in .env.
