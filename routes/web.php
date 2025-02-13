@@ -13,6 +13,7 @@ use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\HighchartController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,5 +61,7 @@ Route::get('users', [UserController::class, 'index']);
 
 Route::get('image-upload', [ImageController::class, 'index']);
 Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
+
+Route::get('chart', [HighchartController::class, 'index']);
 
 require __DIR__.'/auth.php';
