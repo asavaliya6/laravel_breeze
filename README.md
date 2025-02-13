@@ -282,7 +282,7 @@ php artisan tinker
 User::factory()->count(20)->create()
 ```
 
-- Run ```http://localhost:8000/users```
+- Run ```http://localhost:8000/datatables```
 
 
 ## Localization
@@ -327,3 +327,8 @@ php -m | grep imagick
 
 - Highcharts JS is a popular JavaScript charting library 
 - Create Controller,Route,Blade file and run.
+
+# Change Date Format
+
+- Create Controller,Blade file,Route and update user model
+- Run ```http://127.0.0.1:8000/date-format``` ```http://127.0.0.1:8001/date-blade``` 

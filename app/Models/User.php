@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Laravel\Passport\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Laravel\Scout\Searchable;
+use Carbon\Carbon;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -47,7 +48,13 @@ class User extends Authenticatable implements JWTSubject
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'created_at' => 'datetime:Y-m-d',
         ];
+    }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        return Carbon::parse($this->created_at)->format('d-m-Y');
     }
 
     public function getJWTIdentifier()

@@ -14,6 +14,7 @@ use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HighchartController;
+use App\Http\Controllers\DateController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,5 +64,8 @@ Route::get('image-upload', [ImageController::class, 'index']);
 Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
 
 Route::get('chart', [HighchartController::class, 'index']);
+
+Route::get('/date-format', [DateController::class, 'changeDateFormat']);
+Route::get('/date-blade', [DateController::class, 'showDateInBlade']);
 
 require __DIR__.'/auth.php';
