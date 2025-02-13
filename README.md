@@ -305,4 +305,20 @@ User::factory()->count(20)->create()
 
 - Update Usermodel,create controller and add route
 - Import Records: ```php artisan scout:import "App\Models\User"```
- - Run the app ```http://localhost:8000/users```
+- Run the app ```http://localhost:8000/users```
+
+## Generate Thumbnail Image
+
+- It allows users to resize, crop, blur effect, pixelate, greyscale, sepia and apply filters to images easily. With simple syntax, it supports various formats like JPEG, PNG, and GIF.
+
+- First need to:
+
+```
+sudo apt update
+sudo apt install imagemagick php8.3-imagick -y
+sudo systemctl restart apache2
+php -m | grep imagick
+```
+
+- Install spatie/image for resizing images ```composer require spatie/image```
+- Create Routes,Controller and blade file and run ```http://localhost:8000/image-upload```

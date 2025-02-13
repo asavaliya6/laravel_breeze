@@ -12,6 +12,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\ImageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,5 +57,8 @@ Route::middleware(['setlocale'])->group(function () {
 });
 
 Route::get('users', [UserController::class, 'index']);
+
+Route::get('image-upload', [ImageController::class, 'index']);
+Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
 
 require __DIR__.'/auth.php';
