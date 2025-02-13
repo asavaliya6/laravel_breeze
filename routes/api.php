@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\JWTAuthController;
 use App\Http\Controllers\PassportAuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\ProController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -30,4 +32,14 @@ Route::middleware('auth:api')->group(function () {
 // JWT-Protected Routes
 Route::middleware('auth:jwt')->group(function () {
     Route::apiResource('jwt/products', ProductController::class);
+});
+
+// sanctum Authentication Routes
+Route::controller(RegisterController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
+         
+Route::middleware('auth:api')->group(function () {
+    Route::resource('pros', ProController::class);
 });

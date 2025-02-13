@@ -153,6 +153,29 @@ php artisan passport:install
 8. Update a product: PUT http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token} - Content-Type: application/json
 9. Delete a product: DELETE http://127.0.0.1:8000/api/jwt/products/{id}   Authorization: Bearer {token}
 
+## REST API Authentication using Sanctum
+
+- Install Sanctum:
+
+```
+php artisan install:api
+```
+
+- Create API routes for login, register, and pros REST API => routes/api.php
+- Create Controller => app/Http/Controllers/API/BaseController.php =>app/Http/Controllers/API/RegisterController.php => app/Http/Controllers/API/ProController.php
+- Create Eloquent API Resources ```php artisan make:resource ProResource```
+
+- Test the API :
+
+1. Register: POST http://127.0.0.1:8000/api/register
+2. Login: POST http://127.0.0.1:8000/api/login
+5. Get all products: GET http://127.0.0.1:8000/api/pros   Authorization: Bearer {token}
+6. Create a product: POST http://127.0.0.1:8000/api/pros   Authorization: Bearer {token} - Content-Type: application/json
+7. Get a single product: GET http://127.0.0.1:8000/api/pros/{id}   Authorization: Bearer {token}
+8. Update a product: PUT http://127.0.0.1:8000/api/pros/{id}   Authorization: Bearer {token} - Content-Type: application/json
+9. Delete a product: DELETE http://127.0.0.1:8000/api/pros/{id}   Authorization: Bearer {token}
+
+- Create model and table ```php artisan make:migration create_pros_table``` ```php artisan migrate```
 
 ## Send Email using queue with smtp
 
