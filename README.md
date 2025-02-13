@@ -323,7 +323,7 @@ php -m | grep imagick
 - Install spatie/image for resizing images ```composer require spatie/image```
 - Create Routes,Controller and blade file and run ```http://localhost:8000/image-upload```
 
-## High Chart
+## line Chart
 
 - Highcharts JS is a popular JavaScript charting library 
 - Create Controller,Route,Blade file and run.
