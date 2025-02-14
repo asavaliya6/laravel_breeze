@@ -428,3 +428,9 @@ tail -f storage/logs/laravel.log
 
 - Create controller, blade file and add route.
 - Run ```http://127.0.0.1:8000/upload``` 
+
+## Custom validation rule to prevent common passowrd.
+
+- Create a Custom Validation Rule for Weak Passwords ```php artisan make:rule PreventCommonPassword```
+
+- Then apply the Custom Rule in the Breeze Registration Controller
