@@ -15,5 +15,9 @@ class Realuser extends Model
     {
         return $this->hasOne(Realphone::class);
     }
+    public function realposts()
+    {
+        return $this->hasMany(Realpost::class);
+    }
 }
 

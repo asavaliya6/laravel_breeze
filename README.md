@@ -482,3 +482,54 @@ echo $phoneUser->name;
 - Create a User with Phone ```POST http://127.0.0.1:8000/api/realuser``` 
 - Get User's Phone ```GET http://127.0.0.1:8000/api/realuser/1/phone```
 - Get Phone's User ```GET http://127.0.0.1:8000/api/realphone/1/user```
+
+## One-to-Many Relationship
+
+- Create migration and model ```php artisan make:model Realpost -m``` and update realuser model and ```php artisan migrate```
+
+<h2>Insert and Retrieve Data</h2>
+
+```php artisan tinker```
+
+- Insert Data:
+
+```
+use App\Models\Realuser;
+use App\Models\Realpost;
+
+// Create User
+$user = Realuser::create(['name' => 'John Doe', 'email' => 'john@example.com']);
+
+// Create Posts for the User
+$user->realposts()->create([
+    'title' => 'First Post',
+    'body' => 'This is my first post.'
+]);
+
+$user->realposts()->create([
+    'title' => 'Second Post',
+    'body' => 'This is another post.'
+]);
+```
+
+- Retrieve Data :
+
+```
+// Get User's Posts
+$posts = Realuser::find(1)->realposts;
+foreach ($posts as $post) {
+    echo $post->title . "\n";
+}
+
+// Get Post's User
+$post = Realpost::find(1);
+echo $post->realuser->name;
+```
+
+- Create a Controller and Routes for API Access ```php artisan make:controller RealpostController``` and add route
+
+<h2>Test API Endpoints Using Thunder client</h2>
+
+- Create a Post for a User ```POST http://127.0.0.1:8000/api/realuser/1/realpost``` 
+- Get User's Phone ```GET http://127.0.0.1:8000/api/realuser/1/realposts```
+- Get Post's User ```GET http://127.0.0.1:8000/api/realpost/1/realuser```

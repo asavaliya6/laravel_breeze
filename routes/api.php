@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ProController;
 use App\Http\Controllers\RealuserController;
+use App\Http\Controllers\RealpostController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -48,3 +49,7 @@ Route::middleware('auth:api')->group(function () {
 Route::post('/realuser', [RealuserController::class, 'store']);
 Route::get('/realuser/{id}/phone', [RealuserController::class, 'getUserPhone']);
 Route::get('/realphone/{id}/user', [RealuserController::class, 'getPhoneUser']);
+
+Route::post('/realuser/{id}/realpost', [RealpostController::class, 'store']);
+Route::get('/realuser/{id}/realposts', [RealpostController::class, 'getUserPosts']);
+Route::get('/realpost/{id}/realuser', [RealpostController::class, 'getPostUser']);
