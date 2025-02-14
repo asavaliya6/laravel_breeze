@@ -3,12 +3,8 @@
 @section('content')
   
 <div class="card mt-5">
-  <h2 class="card-header">CRUD from scratch</h2>
+  <h2 class="card-header">CRUD</h2>
   <div class="card-body">
-          
-        @session('success')
-            <div class="alert alert-success" role="alert"> {{ $value }} </div>
-        @endsession
   
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <a class="btn btn-success btn-sm" href="{{ route('posts.create') }}"> <i class="fa fa-plus"></i> Create New Post</a>
@@ -18,29 +14,29 @@
             <thead>
                 <tr>
                     <th width="80px">No</th>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>Details</th>
-                    <th width="250px">Action</th>
+                    <th>Action</th>
                 </tr>
             </thead>
   
             <tbody>
             @forelse ($posts as $post)
                 <tr>
-                    <td>{{ ++$i }}</td>
+                    <td>{{ $post->id }}</td>
                     <td>{{ $post->name }}</td>
                     <td>{{ $post->detail }}</td>
                     <td>
                         <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
              
-                            <a class="btn btn-info btn-sm" href="{{ route('posts.show',$post->id) }}"><i class="fa-solid fa-list"></i> Show</a>
+                            <a class="btn btn-info btn-sm" href="{{ route('posts.show',$post->id) }}">Show</a>
               
-                            <a class="btn btn-primary btn-sm" href="{{ route('posts.edit',$post->id) }}"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('posts.edit',$post->id) }}">Edit</a>
              
                             @csrf
                             @method('DELETE')
                 
-                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>
                 </tr>

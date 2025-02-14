@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index(): View
     {
-        $posts = Post::latest()->paginate(5);
+        $posts = Post::orderBy('id', 'ASC')->paginate(5);
           
         return view('posts.index', compact('posts'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -34,12 +34,12 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PostStoreRequest $request): RedirectResponse
+    public function store(PostStoreRequest $request)
     {   
         Post::create($request->validated());
-           
-        return redirect()->route('posts.index')
-                         ->with('success', 'Post created successfully.');
+
+        session()->flash('success', 'Post created successfully.');
+        return redirect()->route('posts.index');
     }
   
     /**
@@ -47,7 +47,8 @@ class PostController extends Controller
      */
     public function show(Post $post): View
     {
-        return view('posts.show',compact('post'));
+        session()->flash('info', 'You are viewing the post details.');
+        return view('posts.show', compact('post'));
     }
   
     /**
@@ -61,22 +62,22 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PostUpdateRequest $request, Post $post): RedirectResponse
+    public function update(PostUpdateRequest $request, Post $post)
     {
         $post->update($request->validated());
-          
-        return redirect()->route('posts.index')
-                        ->with('success','Post updated successfully');
+
+        session()->flash('warning', 'Post updated successfully.');
+        return redirect()->route('posts.index');
     }
   
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post): RedirectResponse
+    public function destroy(Post $post)
     {
         $post->delete();
-           
-        return redirect()->route('posts.index')
-                        ->with('success','Post deleted successfully');
+
+        session()->flash('error', 'Post deleted successfully.');
+        return redirect()->route('posts.index');
     }
 }
