@@ -19,5 +19,9 @@ class Realuser extends Model
     {
         return $this->hasMany(Realpost::class);
     }
+    public function realroles()
+    {
+        return $this->belongsToMany(Realrole::class, 'realrole_realuser');
+    }
 }
 

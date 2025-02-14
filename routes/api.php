@@ -9,6 +9,7 @@ use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ProController;
 use App\Http\Controllers\RealuserController;
 use App\Http\Controllers\RealpostController;
+use App\Http\Controllers\RealroleController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -53,3 +54,7 @@ Route::get('/realphone/{id}/user', [RealuserController::class, 'getPhoneUser']);
 Route::post('/realuser/{id}/realpost', [RealpostController::class, 'store']);
 Route::get('/realuser/{id}/realposts', [RealpostController::class, 'getUserPosts']);
 Route::get('/realpost/{id}/realuser', [RealpostController::class, 'getPostUser']);
+
+Route::post('/realuser/{id}/assign-roles', [RealroleController::class, 'assignRoles']);
+Route::get('/realuser/{id}/roles', [RealroleController::class, 'getUserRoles']);
+Route::get('/realrole/{id}/users', [RealroleController::class, 'getRoleUsers']);

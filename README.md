@@ -480,12 +480,23 @@ echo $phoneUser->name;
 <h2>Test API Endpoints Using Thunder client</h2>
 
 - Create a User with Phone ```POST http://127.0.0.1:8000/api/realuser``` 
+
+- Body (JSON):
+
+```
+{
+    "name": "John Doe",
+    "email": "john@example.com",
+    "phone": "1234567890"
+}
+```
+
 - Get User's Phone ```GET http://127.0.0.1:8000/api/realuser/1/phone```
 - Get Phone's User ```GET http://127.0.0.1:8000/api/realphone/1/user```
 
-## One-to-Many Relationship
+## One-to-Many Relationship && Many-to-One Relationship
 
-- Create migration and model ```php artisan make:model Realpost -m``` and update realuser model and ```php artisan migrate```
+- Create migration and model ```php artisan make:model Realpost -m``` and update Realuser model and ```php artisan migrate```
 
 <h2>Insert and Retrieve Data</h2>
 
@@ -531,5 +542,75 @@ echo $post->realuser->name;
 <h2>Test API Endpoints Using Thunder client</h2>
 
 - Create a Post for a User ```POST http://127.0.0.1:8000/api/realuser/1/realpost``` 
+
+- Body (JSON):
+
+```
+{
+    "title": "Laravel One-to-Many",
+    "body": "This is a one-to-many relationship example."
+}
+```
+
 - Get User's Phone ```GET http://127.0.0.1:8000/api/realuser/1/realposts```
 - Get Post's User ```GET http://127.0.0.1:8000/api/realpost/1/realuser```
+
+## Many-to-Many Relationship
+
+- Create the roles and pivot table (realrole_realuser) ```php artisan make:migration create_realroles_table``` ```php artisan make:migration create_realrole_realuser_table```
+
+-- Create model ```php artisan make:model Realrole``` and upadte Realuser and ```php artisan migrate```
+
+<h2>Insert and Retrieve Data</h2>
+
+```php artisan tinker```
+
+- Insert Data:
+
+```
+use App\Models\Realuser;
+use App\Models\Realrole;
+
+// Create Roles
+$adminRole = Realrole::create(['name' => 'Admin']);
+$userRole = Realrole::create(['name' => 'User']);
+
+// Create User
+$user = Realuser::create(['name' => 'John Doe', 'email' => 'john@example.com']);
+
+// Assign Roles to User
+$user->realroles()->attach([$adminRole->id, $userRole->id]);
+```
+
+- Retrieve Data :
+
+```
+// Get User's Roles
+$roles = Realuser::find(1)->realroles;
+foreach ($roles as $role) {
+    echo $role->name . "\n";
+}
+
+// Get Role's Users
+$users = Realrole::find(1)->realusers;
+foreach ($users as $user) {
+    echo $user->name . "\n";
+}
+```
+
+- Create a Controller and Routes for API Access ```php artisan make:controller RealroleController``` and add route
+
+<h2>Test API Endpoints Using Thunder client</h2>
+
+- Create a Post for a User ```POST http://127.0.0.1:8000/api/realuser/1/assign-roles``` 
+
+- Body (JSON):
+
+```
+{
+    "role_ids": [1, 2]
+}
+```
+
+- Get User's Phone ```GET http://127.0.0.1:8000/api/realuser/1/roles```
+- Get Post's User ```GET http://127.0.0.1:8000/api/realrole/1/users```
