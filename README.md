@@ -437,6 +437,48 @@ tail -f storage/logs/laravel.log
 
 ## Store JSON Format Data in Database 
 
-- Create model and migration ```php artisan make:model Sroreproduct -m```
+- Create model and migration ```php artisan make:model Storeproduct -m```
 
 - Create controller,add route and run ```http://127.0.0.1:8000/storeproducts/create``` ```http://127.0.0.1:8000/storeproducts/search```
+
+## One-to-One Relationship
+
+- Create migration and model ```php artisan make:model Realuser -m``` ```php artisan make:model Realphone -m``` ```php artisan migrate```
+
+<h2>Insert and Retrieve Data</h2>
+
+```php artisan tinker```
+
+- Create a User with a Phone :
+
+```
+use App\Models\Realuser;
+use App\Models\Realphone;
+
+// Create User
+$user = Realuser::create(['name' => 'John Doe', 'email' => 'john@example.com']);
+
+// Create Phone and associate with User
+$phone = new Realphone(['phone' => '1234567890']);
+$user->realphone()->save($phone);
+```
+
+- Retrieve Data :
+
+```
+// Get User's Phone
+$userPhone = Realuser::find(1)->realphone;
+echo $userPhone->phone;
+
+// Get Phone's User
+$phoneUser = Realphone::find(1)->realuser;
+echo $phoneUser->name;
+```
+
+- Create a Controller and Routes for API Access ```php artisan make:controller RealuserController``` and add route
+
+<h2>Test API Endpoints Using Thunder client</h2>
+
+- Create a User with Phone ```POST http://127.0.0.1:8000/api/realuser``` 
+- Get User's Phone ```GET http://127.0.0.1:8000/api/realuser/1/phone```
+- Get Phone's User ```GET http://127.0.0.1:8000/api/realphone/1/user```

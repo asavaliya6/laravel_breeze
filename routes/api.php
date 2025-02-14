@@ -7,6 +7,7 @@ use App\Http\Controllers\PassportAuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\API\ProController;
+use App\Http\Controllers\RealuserController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -43,3 +44,7 @@ Route::controller(RegisterController::class)->group(function(){
 Route::middleware('auth:api')->group(function () {
     Route::resource('pros', ProController::class);
 });
+
+Route::post('/realuser', [RealuserController::class, 'store']);
+Route::get('/realuser/{id}/phone', [RealuserController::class, 'getUserPhone']);
+Route::get('/realphone/{id}/user', [RealuserController::class, 'getPhoneUser']);
