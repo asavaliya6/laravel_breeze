@@ -61,6 +61,7 @@ Route::middleware(['setlocale'])->group(function () {
 });
 
 Route::get('users', [UserController::class, 'index']);
+Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 Route::get('image-upload', [ImageController::class, 'index']);
 Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');

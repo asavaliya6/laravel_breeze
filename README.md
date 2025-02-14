@@ -293,7 +293,7 @@ User::factory()->count(20)->create()
 - Register the SetLocale middleware to the => bootstrap/app.php
 - Create route,controller and update blade file then run project.
 
-## Scout elastic search with Algolia driver
+## Scout elastic search with Algolia driver and Confirm Box Before Delete Record from Database
 
 - Install the Scout package ```composer require laravel/scout```
 

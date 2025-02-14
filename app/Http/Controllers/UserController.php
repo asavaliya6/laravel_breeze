@@ -25,8 +25,14 @@ class UserController extends Controller
 
     public function index(Request $request): View
     {
-        $users = User::search($request->search ?? '')->get();
+        $users = User::search($request->search ?? '')->orderBy('id', 'asc')->get();
           
         return view('users', compact('users'));
+    }
+    
+    public function destroy($id)
+    {
+        User::findOrFail($id)->delete();
+        return redirect()->back()->with('success', 'User deleted successfully.');
     }
 }
