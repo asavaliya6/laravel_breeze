@@ -16,6 +16,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\HighchartController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\CookieController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,5 +73,9 @@ Route::get('/date-blade', [DateController::class, 'showDateInBlade']);
 Route::get('/create-note', [NoteController::class, 'create']);
 Route::get('/update-note/{id}', [NoteController::class, 'update']);
 Route::get('/delete-note/{id}', [NoteController::class, 'delete']);
+
+Route::get('/set-cookie', [CookieController::class, 'setCookie']);
+Route::get('/get-cookie', [CookieController::class, 'getCookie']);
+Route::get('/delete-cookie', [CookieController::class, 'deleteCookie']);
 
 require __DIR__.'/auth.php';

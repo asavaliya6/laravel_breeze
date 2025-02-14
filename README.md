@@ -242,7 +242,7 @@ IP_API_TOKEN=null
 * * * * * cd /path-to-project & php artisan schedule:run >> /dev/null 2>&1
 ```
 
-## Simple CRUD
+## CRUD with Toastr Notification 
 
 - Create Migration ```php artisan make:migration create_posts_table --create=posts``` ```php artisan migrate```
 
@@ -252,7 +252,7 @@ IP_API_TOKEN=null
 
 - Update => routes/web.php && => app/Provides/AppServiceProvider.php
  
-- Add Blade Files => layout.blade.php index.blade.php create.blade.php edit.blade.php show.blade.
+- Add Blade Files in posts folder=> layout.blade.php index.blade.php create.blade.php edit.blade.php show.blade.
 
 - Run App ```php artisan serve``` ```http://localhost:8000/posts```
 
@@ -402,3 +402,20 @@ tail -f storage/logs/laravel.log
 
 - Use php artisan migrate:refresh --seed to reset the database.
 - If logs don’t appear, ensure LOG_CHANNEL=stack in .env.
+
+## Telescope Installation and Configuration
+
+- Laravel Telescope is a debug assistant for Laravel.Whenever write code it is very hard to debug the error in application manually. Telescope provides access to the requests coming into application, exceptions, log entries, database queries, model watch, catch, redis, queued jobs, mail, scheduled tasks and more in one place.
+
+- Install Laravel Telescope Package ```composer require laravel/telescope```
+
+- Also install for specific environment ```composer require laravel/telescope --dev```
+
+- Install Telescope ```php artisan telescope:install``` ```php artisan migrate```
+
+- Ready to run telescope ```localhost:8000/telescope/requests```
+
+## Get,Set and Delete Cookie
+
+- Create controller ```php artisan make:controller CookieController``` and add route.
+- run set: ```http://127.0.0.1:8000/set-cookie``` get: ```http://127.0.0.1:8000/get-cookie``` Delete: ```http://127.0.0.1:8000/delete-cookie```
