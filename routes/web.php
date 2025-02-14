@@ -17,6 +17,7 @@ use App\Http\Controllers\HighchartController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CookieController;
+use App\Http\Controllers\ImageUploadController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -78,5 +79,8 @@ Route::get('/delete-note/{id}', [NoteController::class, 'delete']);
 Route::get('/set-cookie', [CookieController::class, 'setCookie']);
 Route::get('/get-cookie', [CookieController::class, 'getCookie']);
 Route::get('/delete-cookie', [CookieController::class, 'deleteCookie']);
+
+Route::get('/upload', [ImageUploadController::class, 'showUploadForm'])->name('image.form');
+Route::post('/upload', [ImageUploadController::class, 'uploadImage'])->name('image.upload');
 
 require __DIR__.'/auth.php';

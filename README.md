@@ -419,3 +419,12 @@ tail -f storage/logs/laravel.log
 
 - Create controller ```php artisan make:controller CookieController``` and add route.
 - run set: ```http://127.0.0.1:8000/set-cookie``` get: ```http://127.0.0.1:8000/get-cookie``` Delete: ```http://127.0.0.1:8000/delete-cookie```
+
+## Display Image from Storage Folder
+
+- Configure Filesystem Disk on .env file: ```FILESYSTEM_DISK=public```
+
+- Create a Symbolic Link: ```php artisan storage:link```  => This creates a symbolic link, allowing public access to files stored in storage/app/public.
+
+- Create controller, blade file and add route.
+- Run ```http://127.0.0.1:8000/upload``` 
