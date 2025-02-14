@@ -434,3 +434,9 @@ tail -f storage/logs/laravel.log
 - Create a Custom Validation Rule for Weak Passwords ```php artisan make:rule PreventCommonPassword```
 
 - Then apply the Custom Rule in the Breeze Registration Controller
+
+## Store JSON Format Data in Database 
+
+- Create model and migration ```php artisan make:model Sroreproduct -m```
+
+- Create controller,add route and run ```http://127.0.0.1:8000/storeproducts/create``` ```http://127.0.0.1:8000/storeproducts/search```

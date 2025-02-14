@@ -18,6 +18,7 @@ use App\Http\Controllers\DateController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CookieController;
 use App\Http\Controllers\ImageUploadController;
+use App\Http\Controllers\StoreproductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -82,5 +83,8 @@ Route::get('/delete-cookie', [CookieController::class, 'deleteCookie']);
 
 Route::get('/upload', [ImageUploadController::class, 'showUploadForm'])->name('image.form');
 Route::post('/upload', [ImageUploadController::class, 'uploadImage'])->name('image.upload');
+
+Route::get('storeproducts/create', [StoreproductController::class, 'create']);
+Route::get('storeproducts/search', [StoreproductController::class, 'search']);
 
 require __DIR__.'/auth.php';
