@@ -10,7 +10,7 @@
         <a class="btn btn-primary btn-sm" href="{{ route('posts.index') }}"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
   
-    <form action="{{ route('posts.store') }}" method="POST">
+    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
   
         <div class="mb-3">
@@ -38,6 +38,19 @@
                 <div class="form-text text-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        <div class="mb-3">
+            <label for="inputImage" class="form-label"><strong>Image:</strong></label>
+            <input 
+                type="file" 
+                name="image" 
+                class="form-control @error('image') is-invalid @enderror" 
+                id="inputImage">
+            @error('image')
+                <div class="form-text text-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
         <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Submit</button>
     </form>
   

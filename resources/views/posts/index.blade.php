@@ -13,9 +13,10 @@
         <table class="table table-bordered table-striped mt-4">
             <thead>
                 <tr>
-                    <th width="80px">No</th>
-                    <th>ID</th>
+                    <th width="80px">ID</th>
                     <th>Name</th>
+                    <th>Details</th>
+                    <th>Image</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -26,6 +27,13 @@
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->name }}</td>
                     <td>{{ $post->detail }}</td>
+                    <td>
+                        @if($post->image)
+                            <img src="{{ asset('storage/'.$post->image) }}" width="100" alt="Post Image">
+                        @else
+                            <p>No image uploaded</p>
+                        @endif
+                    </td>
                     <td>
                         <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
              

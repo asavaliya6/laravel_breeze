@@ -27,6 +27,14 @@
                 {{ $post->detail }}
             </div>
         </div>
+        <div class="form-group">
+            <strong>Image:</strong> <br/>
+            @if($post->image)
+                <img src="{{ asset('storage/'.$post->image) }}" width="200" alt="Post Image">
+            @else
+                <p>No image uploaded</p>
+            @endif
+        </div>
     </div>
   
   </div>

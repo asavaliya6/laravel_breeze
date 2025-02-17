@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
     
@@ -36,7 +37,13 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request)
     {   
-        Post::create($request->validated());
+        $validated = $request->validated();
+
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('posts', 'public');
+        }
+    
+        Post::create($validated);
 
         session()->flash('success', 'Post created successfully.');
         return redirect()->route('posts.index');
@@ -64,7 +71,16 @@ class PostController extends Controller
      */
     public function update(PostUpdateRequest $request, Post $post)
     {
-        $post->update($request->validated());
+         $validated = $request->validated();
+
+        if ($request->hasFile('image')) {
+            if ($post->image) {
+                Storage::disk('public')->delete($post->image);
+            }
+        $validated['image'] = $request->file('image')->store('posts', 'public');
+    }
+
+    $post->update($validated);
 
         session()->flash('warning', 'Post updated successfully.');
         return redirect()->route('posts.index');
