@@ -19,6 +19,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CookieController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\StoreproductController;
+use App\Http\Controllers\LoadController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -86,5 +87,7 @@ Route::post('/upload', [ImageUploadController::class, 'uploadImage'])->name('ima
 
 Route::get('storeproducts/create', [StoreproductController::class, 'create']);
 Route::get('storeproducts/search', [StoreproductController::class, 'search']);
+
+Route::get('loads',[LoadController::class,'index'])->name('loads.index');
 
 require __DIR__.'/auth.php';

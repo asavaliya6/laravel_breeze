@@ -614,3 +614,10 @@ foreach ($users as $user) {
 
 - Get User's Phone ```GET http://127.0.0.1:8000/api/realuser/1/roles```
 - Get Post's User ```GET http://127.0.0.1:8000/api/realrole/1/users```
+
+## Load More Data on Scroll Event
+
+- Create Migration and model ```php artisan make:model Load -m``` ```php artisan migrate```
+- Create Factory Class ```php artisan make:factory PostFactory --model=Post```
+- generate the dummy data ```php artisan tinker``` ```Load::factory()->count(20)->create()```
+- Create Route,Controller and Blade file and run ```http://localhost:8000/loads```
