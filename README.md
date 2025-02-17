@@ -307,7 +307,7 @@ User::factory()->count(20)->create()
 - Import Records: ```php artisan scout:import "App\Models\User"```
 - Run the app ```http://localhost:8000/users```
 
-## Generate Thumbnail Image
+## Generate Thumbnail Image and Add Blur Effect to Image
 
 - It allows users to resize, crop, blur effect, pixelate, greyscale, sepia and apply filters to images easily. With simple syntax, it supports various formats like JPEG, PNG, and GIF.
 

@@ -24,24 +24,25 @@
                 </div>
             @endif
   
-            @session('success')
+            @if(session('success'))
                 <div class="alert alert-success" role="alert"> 
-                    {{ $value }}
+                    {{ session('success') }}
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="row mt-3">
+                    <div class="col-md-6">
                         <strong>Original Image:</strong>
                         <br/>
-                        <img src="/images/{{ Session::get('imageName') }}" width="300px" />
+                        <img src="/images/{{ session('imageName') }}" width="300px" />
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <strong>Thumbnail Image:</strong>
                         <br/>
-                        <img src="/images/{{ Session::get('imageName') }}" />
+                        <img src="/images/{{ session('thumbnailName') }}" />
                     </div>
                 </div>
-            @endsession
+            @endif
+
             
             <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf

@@ -31,16 +31,21 @@ class ImageController extends Controller
         ]);
 
         $imageName = time().'.'.$request->image->extension();  
+        $thumbnailName = time().'_thumb.'.$request->image->extension();
 
+        // Save original image
         $destinationPath = public_path('/images/');
         $request->image->move($destinationPath, $imageName);
 
-        $destinationPathThumbnail = public_path('images/');
+        // Create and save the thumbnail
+        $destinationPathThumbnail = public_path('/images/');
         Image::load($destinationPath. $imageName)
-                ->resize(200, 150)
-                ->save($destinationPathThumbnail. $imageName);
+                    ->resize(200, 150)
+                    ->blur(20)
+                    ->save($destinationPathThumbnail. $thumbnailName);
 
         return back()->with('success', 'You have successfully uploaded an image.')
-                    ->with('imageName', $imageName);
+                    ->with('imageName', $imageName)
+                    ->with('thumbnailName', $thumbnailName);
     }
 }
