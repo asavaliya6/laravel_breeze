@@ -637,6 +637,7 @@ foreach ($users as $user) {
 
 ## Apexcharts using Larapex Charts
 
+- modern charting library references : https://apexcharts.com/
 - install arielmejiadev/larapex-charts composer package ```composer require arielmejiadev/larapex-charts```
 
 - publish configuration file ```php artisan vendor:publish --tag=larapex-charts-config```
