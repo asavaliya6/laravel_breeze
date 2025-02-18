@@ -629,7 +629,7 @@ foreach ($users as $user) {
 
 - Create Route,Add Controller,Model and View and run ```http://localhost:8000/ajaxproducts```
 
-## Generate PDF File using DomPDF
+## Generate PDF File using DomPDF Package
 
 - Install the DomPDF package ```composer require barryvdh/laravel-dompdf```
 
