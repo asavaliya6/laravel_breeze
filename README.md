@@ -621,3 +621,10 @@ foreach ($users as $user) {
 - Create Factory Class ```php artisan make:factory PostFactory --model=Post```
 - generate the dummy data ```php artisan tinker``` ```Load::factory()->count(20)->create()```
 - Create Route,Controller and Blade file and run ```http://localhost:8000/loads```
+
+## Ajax CRUD Operation using Yajra datatables
+
+- Install the Yajra Datatable composer package for datatable
+- Create Migration Table ```php artisan make:migration create_ajaxproducts_table --create=ajaxproducts``` ```php artisan migrate```
+
+- Create Route,Add Controller,Model and View and run ```http://localhost:8000/ajaxproducts```

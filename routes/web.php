@@ -20,6 +20,7 @@ use App\Http\Controllers\CookieController;
 use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\StoreproductController;
 use App\Http\Controllers\LoadController;
+use App\Http\Controllers\AjaxproductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -89,5 +90,7 @@ Route::get('storeproducts/create', [StoreproductController::class, 'create']);
 Route::get('storeproducts/search', [StoreproductController::class, 'search']);
 
 Route::get('loads',[LoadController::class,'index'])->name('loads.index');
+
+Route::resource('ajaxproducts', AjaxproductController::class);
 
 require __DIR__.'/auth.php';
