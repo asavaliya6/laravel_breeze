@@ -23,6 +23,7 @@ use App\Http\Controllers\LoadController;
 use App\Http\Controllers\AjaxproductController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ApexchartsController;
+use App\Http\Controllers\GoogleChartController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -98,5 +99,7 @@ Route::resource('ajaxproducts', AjaxproductController::class);
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 Route::get('charts', [ApexchartsController::class, 'index']);
+
+Route::get('googlechart', [GoogleChartController::class, 'index']);
 
 require __DIR__.'/auth.php';

@@ -328,6 +328,19 @@ php -m | grep imagick
 - Highcharts JS is a popular JavaScript charting library 
 - Create Controller,Route,Blade file and run.
 
+## Apexcharts using Larapex Charts
+
+- modern charting library references : https://apexcharts.com/
+- install arielmejiadev/larapex-charts composer package ```composer require arielmejiadev/larapex-charts```
+
+- publish configuration file ```php artisan vendor:publish --tag=larapex-charts-config```
+
+- Create Route,Create Controller,Create Blade File and Create Chart Class in => app/Charts/MonthlyUsersChart.php and run ```http://localhost:8000/charts```
+
+## Dynamic Google Charts Integration
+
+- Create Controller,blade file and Add route and run ```http://localhost:8000/googlechart```
+
 ## Change Date Format
 
 - Create Controller,Blade file,Route and update user model
@@ -634,12 +647,3 @@ foreach ($users as $user) {
 - Install the DomPDF package ```composer require barryvdh/laravel-dompdf```
 
 - Create Controller,Add Route and Create View File then run ```http://localhost:8000/generate-pdf```
-
-## Apexcharts using Larapex Charts
-
-- modern charting library references : https://apexcharts.com/
-- install arielmejiadev/larapex-charts composer package ```composer require arielmejiadev/larapex-charts```
-
-- publish configuration file ```php artisan vendor:publish --tag=larapex-charts-config```
-
-- Create Route,Create Controller,Create Blade File and Create Chart Class in => app/Charts/MonthlyUsersChart.php and run ```http://localhost:8000/charts```
