@@ -628,3 +628,9 @@ foreach ($users as $user) {
 - Create Migration Table ```php artisan make:migration create_ajaxproducts_table --create=ajaxproducts``` ```php artisan migrate```
 
 - Create Route,Add Controller,Model and View and run ```http://localhost:8000/ajaxproducts```
+
+## Generate PDF File using DomPDF
+
+- Install the DomPDF package ```composer require barryvdh/laravel-dompdf```
+
+- Create Controller,Add Route and Create View File then run ```http://localhost:8000/generate-pdf```

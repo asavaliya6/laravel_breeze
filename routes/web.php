@@ -21,6 +21,7 @@ use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\StoreproductController;
 use App\Http\Controllers\LoadController;
 use App\Http\Controllers\AjaxproductController;
+use App\Http\Controllers\PDFController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -92,5 +93,7 @@ Route::get('storeproducts/search', [StoreproductController::class, 'search']);
 Route::get('loads',[LoadController::class,'index'])->name('loads.index');
 
 Route::resource('ajaxproducts', AjaxproductController::class);
+
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
 require __DIR__.'/auth.php';
