@@ -25,6 +25,8 @@ use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ApexchartsController;
 use App\Http\Controllers\GoogleChartController;
 use App\Http\Controllers\TraitpostController;
+use App\Http\Controllers\WordpressPostController;
+use App\Http\Controllers\ShopifyPostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -104,5 +106,8 @@ Route::get('charts', [ApexchartsController::class, 'index']);
 Route::get('googlechart', [GoogleChartController::class, 'index']);
 
 Route::get('/traitpost', [TraitpostController::class, 'index']);
+
+Route::get('/post-wordpress', [WordpressPostController::class, 'index']);
+Route::get('/post-shopify', [ShopifyPostController::class, 'index']);
 
 require __DIR__.'/auth.php';

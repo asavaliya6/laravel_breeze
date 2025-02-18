@@ -655,3 +655,13 @@ foreach ($users as $user) {
 - Create Sluggable.php class and define the methods for generating slugs and checking their uniqueness ```php artisan make:trait Traits/Sluggable```
 
 - Create controller,add route and run ```http://localhost:8000/trailpost```
+
+## Create Interface
+
+- Create Interface ```php artisan make:interface Interfaces/PostInterface```
+
+- Create two new service classes and implement "PostInterface" : ```php artisan make:class Services/WordpressService``` ```php artisan make:class Services/WordpressService```
+
+- Create two controllers ```php artisan make:controller WordpressPostController``` ```php artisan make:controller ShopifyPostController```
+
+- add route and run ```http://127.0.0.1:8000/post-wordpress``` ```post-shopify```
