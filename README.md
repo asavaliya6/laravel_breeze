@@ -669,3 +669,30 @@ foreach ($users as $user) {
 - Create two controllers ```php artisan make:controller WordpressPostController``` ```php artisan make:controller ShopifyPostController```
 
 - add route and run ```http://127.0.0.1:8000/post-wordpress``` ```http://127.0.0.1:8000/post-shopify```
+
+## Create Custom Helper Functions
+
+- Create `app/Helpers/helpers.php`
+
+- Register File Path In composer.json File:
+
+```
+
+...
+  
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
+    },
+  
+...
+
+```
+
+- Loads our helper file ```composer dump-autoload``` and add route and run ```http://localhost:8000/call-helper```

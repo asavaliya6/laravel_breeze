@@ -113,4 +113,13 @@ Route::get('/post-shopify', [ShopifyPostController::class, 'index']);
 
 Route::get('chartjs', [ChartJSController::class, 'index']);
 
+Route::get('call-helper', function(){
+  
+    $mdY = convertYmdToMdy('2022-02-12');
+    var_dump("Converted into 'MDY': " . $mdY);
+    
+    $ymd = convertMdyToYmd('02-12-2022');
+    var_dump("Converted into 'YMD': " . $ymd);
+});
+
 require __DIR__.'/auth.php';
