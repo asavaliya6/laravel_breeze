@@ -27,6 +27,7 @@ use App\Http\Controllers\GoogleChartController;
 use App\Http\Controllers\TraitpostController;
 use App\Http\Controllers\WordpressPostController;
 use App\Http\Controllers\ShopifyPostController;
+use App\Http\Controllers\ChartJSController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -109,5 +110,7 @@ Route::get('/traitpost', [TraitpostController::class, 'index']);
 
 Route::get('/post-wordpress', [WordpressPostController::class, 'index']);
 Route::get('/post-shopify', [ShopifyPostController::class, 'index']);
+
+Route::get('chartjs', [ChartJSController::class, 'index']);
 
 require __DIR__.'/auth.php';

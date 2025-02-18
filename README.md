@@ -341,6 +341,10 @@ php -m | grep imagick
 
 - Create Controller,blade file and Add route and run ```http://localhost:8000/googlechart```
 
+## Using Chartjs Javascript library to generate chart
+
+- Create controller,blade and add route and run ```http://localhost:8000/chartjs```
+
 ## Change Date Format
 
 - Create Controller,Blade file,Route and update user model
