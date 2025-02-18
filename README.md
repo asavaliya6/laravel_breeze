@@ -647,3 +647,11 @@ foreach ($users as $user) {
 - Install the DomPDF package ```composer require barryvdh/laravel-dompdf```
 
 - Create Controller,Add Route and Create View File then run ```http://localhost:8000/generate-pdf```
+
+##  Create Custom Traits
+
+- Create model and migration ```php artisan make:model Traitpost -m```
+
+- Create Sluggable.php class and define the methods for generating slugs and checking their uniqueness ```php artisan make:trait Traits/Sluggable```
+
+- Create controller,add route and run ```http://localhost:8000/trailpost```

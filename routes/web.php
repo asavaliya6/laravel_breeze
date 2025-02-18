@@ -24,6 +24,7 @@ use App\Http\Controllers\AjaxproductController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ApexchartsController;
 use App\Http\Controllers\GoogleChartController;
+use App\Http\Controllers\TraitpostController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -101,5 +102,7 @@ Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 Route::get('charts', [ApexchartsController::class, 'index']);
 
 Route::get('googlechart', [GoogleChartController::class, 'index']);
+
+Route::get('/traitpost', [TraitpostController::class, 'index']);
 
 require __DIR__.'/auth.php';
