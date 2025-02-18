@@ -664,4 +664,4 @@ foreach ($users as $user) {
 
 - Create two controllers ```php artisan make:controller WordpressPostController``` ```php artisan make:controller ShopifyPostController```
 
-- add route and run ```http://127.0.0.1:8000/post-wordpress``` ```post-shopify```
+- add route and run ```http://127.0.0.1:8000/post-wordpress``` ```http://127.0.0.1:8000/post-shopify```
