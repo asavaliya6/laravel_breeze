@@ -634,3 +634,11 @@ foreach ($users as $user) {
 - Install the DomPDF package ```composer require barryvdh/laravel-dompdf```
 
 - Create Controller,Add Route and Create View File then run ```http://localhost:8000/generate-pdf```
+
+## Apexcharts using Larapex Charts
+
+- install arielmejiadev/larapex-charts composer package ```composer require arielmejiadev/larapex-charts```
+
+- publish configuration file ```php artisan vendor:publish --tag=larapex-charts-config```
+
+- Create Route,Create Controller,Create Blade File and Create Chart Class in => app/Charts/MonthlyUsersChart.php and run ```http://localhost:8000/charts```
