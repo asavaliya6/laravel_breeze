@@ -696,3 +696,40 @@ foreach ($users as $user) {
 ```
 
 - Loads our helper file ```composer dump-autoload``` and add route and run ```http://localhost:8000/call-helper```
+
+## Generate UUID
+
+- Create model and migration with uuid ```php artisan make:model Uuidpost -m``` ```php artisan migrate```
+
+- Create Controller ```php artisan make:controller UuidpostController``` and add route in => routes/api.php
+
+- Test the API : ```php artisan serve```
+
+1) Create a Uuidpost POST http://127.0.0.1:8000/api/uuidposts
+
+- Body (JSON):
+
+```
+{
+    "title": "My First Post",
+    "content": "This is my first post using UUID."
+}
+```
+
+2) Get All Uuidposts GET http://127.0.0.1:8000/api/uuidposts
+
+3) Get a Specific Uuidpost GET http://127.0.0.1:8000/api/uuidposts/{uuid}
+
+4) Update a Uuidpost PUT http://127.0.0.1:8000/api/uuidposts/{uuid}
+
+- Body (JSON):
+
+```
+{
+    "title": "Updated Title",
+    "content": "Updated content."
+}
+```
+
+5) Delete a Uuidpost DELETE http://127.0.0.1:8000/api/uuidposts/{uuid}
+

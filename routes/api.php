@@ -10,6 +10,7 @@ use App\Http\Controllers\API\ProController;
 use App\Http\Controllers\RealuserController;
 use App\Http\Controllers\RealpostController;
 use App\Http\Controllers\RealroleController;
+use App\Http\Controllers\UuidpostController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -58,3 +59,9 @@ Route::get('/realpost/{id}/realuser', [RealpostController::class, 'getPostUser']
 Route::post('/realuser/{id}/assign-roles', [RealroleController::class, 'assignRoles']);
 Route::get('/realuser/{id}/roles', [RealroleController::class, 'getUserRoles']);
 Route::get('/realrole/{id}/users', [RealroleController::class, 'getRoleUsers']);
+
+Route::post('/uuidposts', [UuidpostController::class, 'store']);
+Route::get('/uuidposts', [UuidpostController::class, 'index']);
+Route::get('/uuidposts/{uuid}', [UuidpostController::class, 'show']);
+Route::put('/uuidposts/{uuid}', [UuidpostController::class, 'update']);
+Route::delete('/uuidposts/{uuid}', [UuidpostController::class, 'destroy']);
