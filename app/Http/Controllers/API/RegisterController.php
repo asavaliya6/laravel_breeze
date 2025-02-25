@@ -11,11 +11,7 @@ use Illuminate\Http\JsonResponse;
    
 class RegisterController extends BaseController
 {
-    /**
-     * Register api
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function register(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -31,22 +27,17 @@ class RegisterController extends BaseController
         $input = $request->all();
         $input['password'] = bcrypt($input['password']);
         $user = User::create($input);
-        $success['token'] =  $user->createToken('MyApp')->accessToken; // FIXED
+        $success['token'] =  $user->createToken('MyApp')->accessToken;
         $success['name'] =  $user->name;
    
         return $this->sendResponse($success, 'User registered successfully.');
     }
    
-    /**
-     * Login api
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function login(Request $request): JsonResponse
     {
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){ 
             $user = Auth::user(); 
-            $success['token'] =  $user->createToken('MyApp')->accessToken; // FIXED
+            $success['token'] =  $user->createToken('MyApp')->accessToken;
             $success['name'] =  $user->name;
    
             return $this->sendResponse($success, 'User logged in successfully.');

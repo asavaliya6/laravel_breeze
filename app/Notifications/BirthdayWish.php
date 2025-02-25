@@ -13,27 +13,16 @@ class BirthdayWish extends Notification
   
     private $messages;
   
-    /**
-     * Create a new notification instance.
-     */
     public function __construct($messages)
     {
         $this->messages = $messages;
     }
-  
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @return array
-     */
+
     public function via(object $notifiable): array
     {
         return ['mail'];
     }
-  
-    /**
-     * Get the mail representation of the notification.
-     */
+
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
@@ -41,12 +30,7 @@ class BirthdayWish extends Notification
                     ->line($this->messages['wish'])
                     ->line('Thank you for using our application!');
     }
-  
-    /**
-     * Get the array representation of the notification.
-     *
-     * @return array
-     */
+
     public function toArray(object $notifiable): array
     {
         return [

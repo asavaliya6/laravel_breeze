@@ -22,19 +22,11 @@ class DemoCron extends Command
      */
     protected $description = 'Command description';
   
-    /**
-     * Execute the console command.
-     */
+
     public function handle()
     {
         info("Cron Job running at ". now());
-      
-        /*------------------------------------------
-        --------------------------------------------
-        Write Your Logic Here....
-        I am getting users and create new users if not exist....
-        --------------------------------------------
-        --------------------------------------------*/
+
         $response = Http::get('https://jsonplaceholder.typicode.com/users');
           
         $users = $response->json();

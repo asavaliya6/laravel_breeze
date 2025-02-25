@@ -12,11 +12,6 @@ use Illuminate\Http\JsonResponse;
    
 class ProController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(): JsonResponse
     {
         $pros = Pro::all();
@@ -24,12 +19,6 @@ class ProController extends BaseController
         return $this->sendResponse(ProResource::collection($pros), 'Pros retrieved successfully.');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request): JsonResponse
     {
         $input = $request->all();
@@ -47,13 +36,7 @@ class ProController extends BaseController
    
         return $this->sendResponse(new ProResource($pro), 'Pro created successfully.');
     } 
-   
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id): JsonResponse
     {
         $pro = Pro::find($id);
@@ -65,13 +48,6 @@ class ProController extends BaseController
         return $this->sendResponse(new ProResource($pro), 'Pro retrieved successfully.');
     }
     
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Pro $pro): JsonResponse
     {
         $input = $request->all();
@@ -91,13 +67,7 @@ class ProController extends BaseController
    
         return $this->sendResponse(new ProResource($pro), 'Pro updated successfully.');
     }
-   
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Pro $pro): JsonResponse
     {
         $pro->delete();

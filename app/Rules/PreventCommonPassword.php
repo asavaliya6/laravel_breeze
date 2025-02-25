@@ -6,13 +6,7 @@ use Illuminate\Contracts\Validation\Rule;
 
 class PreventCommonPassword implements Rule
 {
-    /**
-     * Determine if the validation rule passes.
-     *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @return bool
-     */
+
     public function passes($attribute, $value)
     {
         $commonPasswords = [
@@ -23,11 +17,6 @@ class PreventCommonPassword implements Rule
         return !in_array($value, $commonPasswords);
     }
 
-    /**
-     * Get the validation error message.
-     *
-     * @return string
-     */
     public function message()
     {
         return 'The chosen password is too common. Please choose a more secure password.';

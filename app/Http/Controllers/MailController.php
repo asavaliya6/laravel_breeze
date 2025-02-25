@@ -8,11 +8,7 @@ use App\Mail\DemoMail;
     
 class MailController extends Controller
 {
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
+
     public function index()
     {
         $mailData = [

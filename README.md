@@ -179,7 +179,7 @@ php artisan install:api
 
 ## Send Email using queue with smtp
 
-- First enable 2-step varification on gmail then configure .env file :
+- First enable 2-step varification on gmail and create app in ```https://support.google.com/mail/answer/185833?hl=en``` then configure .env file :
 
 ```
 MAIL_MAILER=smtp
@@ -215,12 +215,6 @@ MAIL_FROM_NAME="${APP_NAME}"
 - Publish Configuration File ```php artisan vendor:publish --provider="Stevebauman\Location\LocationServiceProvider"```
 - Create Route => routes/web.php
 - Create Controller ```php artisan make:controller AddressController```
-- Update .env :
-
-```
-LOCATION_TESTING=false
-IP_API_TOKEN=null
-```
 
 - Create Blade File => resources/views/address.blade.php
 - Run App ```php artisan serve``` ```http://localhost:8000/address```

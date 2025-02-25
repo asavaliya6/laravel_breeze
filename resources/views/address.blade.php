@@ -9,7 +9,7 @@
   
 <div class="container">
     <div class="card mt-5">
-        <h3 class="card-header p-3">How to Get Current User Location with Laravel 11?- ItSolutionStuff.com</h3>
+        <h3 class="card-header p-3">Get Current User Location</h3>
         <div class="card-body">
             @if($currentUserInfo)
                 <p><strong>IP:</strong> {{ $currentUserInfo->ip }}</p>

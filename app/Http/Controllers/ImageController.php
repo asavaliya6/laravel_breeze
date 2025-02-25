@@ -9,21 +9,12 @@ use Spatie\Image\Image;
   
 class ImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(): View
     {
         return view('imageUpload');
     }
-        
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
@@ -33,11 +24,9 @@ class ImageController extends Controller
         $imageName = time().'.'.$request->image->extension();  
         $thumbnailName = time().'_thumb.'.$request->image->extension();
 
-        // Save original image
         $destinationPath = public_path('/images/');
         $request->image->move($destinationPath, $imageName);
 
-        // Create and save the thumbnail
         $destinationPathThumbnail = public_path('/images/');
         Image::load($destinationPath. $imageName)
                     ->resize(200, 150)

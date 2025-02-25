@@ -96,22 +96,11 @@
 <script type="text/javascript">
   $(function () {
 
-    /*------------------------------------------
-     --------------------------------------------
-     Pass Header Token
-     --------------------------------------------
-     --------------------------------------------*/ 
     $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
     });
-      
-    /*------------------------------------------
-    --------------------------------------------
-    Render DataTable
-    --------------------------------------------
-    --------------------------------------------*/
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
@@ -124,11 +113,6 @@
         ]
     });
 
-    /*------------------------------------------
-    --------------------------------------------
-    Click to Button
-    --------------------------------------------
-    --------------------------------------------*/
     $('#createNewAjaxproduct').click(function () {
         $('#saveBtn').val("create-ajaxproduct");
         $('#ajaxproduct_id').val('');
@@ -137,11 +121,6 @@
         $('#ajaxModel').modal('show');
     });
 
-    /*------------------------------------------
-    --------------------------------------------
-    Click to Edit Button
-    --------------------------------------------
-    --------------------------------------------*/
     $('body').on('click', '.showAjaxproduct', function () {
       var ajaxproduct_id = $(this).data('id');
       $.get("{{ route('ajaxproducts.index') }}" +'/' + ajaxproduct_id, function (data) {
@@ -150,12 +129,7 @@
           $('.show-detail').text(data.detail);
       })
     });
-      
-    /*------------------------------------------
-    --------------------------------------------
-    Click to Edit Button
-    --------------------------------------------
-    --------------------------------------------*/
+
     $('body').on('click', '.editAjaxproduct', function () {
       var ajaxproduct_id = $(this).data('id');
       $.get("{{ route('ajaxproducts.index') }}" +'/' + ajaxproduct_id +'/edit', function (data) {
@@ -167,12 +141,7 @@
           $('#detail').val(data.detail);
       })
     });
-      
-    /*------------------------------------------
-    --------------------------------------------
-    Create Ajaxproduct Code
-    --------------------------------------------
-    --------------------------------------------*/
+
     $('#ajaxproductForm').submit(function(e) {
         e.preventDefault();
  
@@ -202,12 +171,7 @@
            });
       
     });
-      
-    /*------------------------------------------
-    --------------------------------------------
-    Delete Ajaxproduct Code
-    --------------------------------------------
-    --------------------------------------------*/
+
     $('body').on('click', '.deleteAjaxproduct', function () {
      
         var ajaxproduct_id = $(this).data("id");
