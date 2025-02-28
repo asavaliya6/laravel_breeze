@@ -18,7 +18,9 @@
         "laravel/tinker": "^2.9",
         "php-open-source-saver/jwt-auth": "^2.8",
         "spatie/image": "^3.8",
+        "srmklive/paypal": "^3.0",
         "stevebauman/location": "^7.4",
+        "stripe/stripe-php": "^16.6",
         "yajra/laravel-datatables": "^11.0"
     },
     "require-dev": {

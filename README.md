@@ -727,3 +727,18 @@ foreach ($users as $user) {
 
 5) Delete a Uuidpost DELETE http://127.0.0.1:8000/api/uuidposts/{uuid}
 
+
+## Paypal Payment Gateway Intergration
+
+- Create Paypal Developer account in https://developer.paypal.com/home/
+- install `composer require srmklive/paypal:~3.0` and publish `php artisan vendor:publish --provider "Srmklive\PayPal\Providers\PayPalServiceProvider"`
+- update .env => add databse and add Paypal mode,sandbox_client_id and sandbox_client_secret
+- Create Controller,model,migration and add view and migration
+
+## Stripe Payment Gateway Intergration
+
+- Sign in Stripe with Temp mail https://stripe.com/in
+- install `composer require stripe/stripe-php`
+- update .env => add database and and stripe_test_pk and stripe_test_sk
+- Create stripe.php in config/stripe.php
+- Create Controller,model,migration and add view and migration

@@ -28,6 +28,10 @@ use App\Http\Controllers\TraitpostController;
 use App\Http\Controllers\WordpressPostController;
 use App\Http\Controllers\ShopifyPostController;
 use App\Http\Controllers\ChartJSController;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\StripeController;
+use App\Http\Controllers\PaymentController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -121,5 +125,27 @@ Route::get('call-helper', function(){
     $ymd = convertMdyToYmd('02-12-2022');
     var_dump("Converted into 'YMD': " . $ymd);
 });
+
+// PayPal Payment Routes
+Route::get('paypal_payment', function () {
+    return view('payments.paypal_payment');
+})->name('paypal_payment');
+
+Route::post('paypal', [PaymentController::class, 'paypalpayment'])->name('paypal');
+Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
+Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
+
+Route::get('paypal_success', function () {
+    return view('payments.paypal_success');
+})->name('paypal.success.view');
+
+// Stripe Payment Routes
+Route::get('stripe_payment', function () {
+    return view('payments.stripe_payment');
+})->name('stripe_payment');
+
+Route::post('stripe', [PaymentController::class, 'stripePayment'])->name('stripe');
+Route::get('stripe/success', [PaymentController::class, 'stripeSuccess'])->name('stripe.success');
+Route::get('stripe/cancel', [PaymentController::class, 'stripeCancel'])->name('stripe.cancel');
 
 require __DIR__.'/auth.php';
