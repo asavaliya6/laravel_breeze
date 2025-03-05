@@ -1,0 +1,377 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Breeze API",
+        "description": "API documentation for Laravel Breeze with JWT authentication.",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/jwt/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User Registration",
+                "operationId": "c10b895d7e2d91df3608133a5b3345e6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "John Doe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    }
+                }
+            }
+        },
+        "/api/jwt/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User Login",
+                "operationId": "5e4e46b3a323c0fea530418415e5fbfa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful login"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/jwt/user": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get Authenticated User",
+                "operationId": "05f262e4ee4d89ab4e6c7a0459d07b43",
+                "responses": {
+                    "200": {
+                        "description": "User data retrieved"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/jwt/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User Logout",
+                "operationId": "89d55c894e38d2f8229564ae418b4d25",
+                "responses": {
+                    "200": {
+                        "description": "User logged out successfully"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/jwt/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get list of products",
+                "operationId": "f63c38c7810b2de7478043adce3da541",
+                "responses": {
+                    "200": {
+                        "description": "List of products"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Create a new product",
+                "operationId": "dde1b7ce3ccbfb8e90809a50b7e7a86d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Laptop"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Gaming Laptop"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": 1200.99
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Product created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid request"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/jwt/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Get a single product",
+                "operationId": "45fdc77af7d66561513e50e85a7a1c45",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product data retrieved"
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Update a product",
+                "operationId": "3b1384d72a3709bcd3c029a903ea726b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "price"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Updated Laptop"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "High-end Gaming Laptop"
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "example": 1400.99
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Product updated successfully"
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Delete a product",
+                "operationId": "0548c1474ea6337ccf41e5d78b052749",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product deleted successfully"
+                    },
+                    "404": {
+                        "description": "Product not found"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Auth"
+        },
+        {
+            "name": "Products",
+            "description": "Products"
+        }
+    ],
+    "security": [
+        {
+            "BearerAuth": []
+        }
+    ]
+}
