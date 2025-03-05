@@ -749,3 +749,4 @@ foreach ($users as $user) {
 - Publish the configuration files `php artisan vendor:publish --provider="L5Swagger\L5SwaggerServiceProvider"`
 - Create annotation syntax for user login,register,logout,getuser details and product details
 - Update l5-swagger.php and generate docs `php artisan l5-swagger:generate`
+- Run http://127.0.0.1:8000/api/documentation
