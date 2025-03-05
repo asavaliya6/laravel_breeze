@@ -742,3 +742,10 @@ foreach ($users as $user) {
 - update .env => add database and and stripe_test_pk and stripe_test_sk
 - Create stripe.php in config/stripe.php
 - Create Controller,model,migration and add view and migration
+
+## Swagger integration
+
+- Install L5-Swagger for API documentation in JWT-based authentication `composer require darkaonline/l5-swagger`
+- Publish the configuration files `php artisan vendor:publish --provider="L5Swagger\L5SwaggerServiceProvider"`
+- Create annotation syntax for user login,register,logout,getuser details and product details
+- Update l5-swagger.php and generate docs `php artisan l5-swagger:generate`
