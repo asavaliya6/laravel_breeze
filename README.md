@@ -750,3 +750,12 @@ foreach ($users as $user) {
 - Create annotation syntax for user login,register,logout,getuser details and product details
 - Update l5-swagger.php and generate docs `php artisan l5-swagger:generate`
 - Run http://127.0.0.1:8000/api/documentation
+
+## API versioning implemented with v1 and v2 using prefix routing 
+
+- Create API Versioned Controllers `php artisan make:controller Api/V1/UserController` `php artisan make:controller Api/V2/UserController`
+- add prefix route in routes/api.php
+- Test api in:
+
+1) GET http://127.0.0.1:8000/api/v1/users   -->v1
+2) GET http://127.0.0.1:8000/api/v2/users   -->v2

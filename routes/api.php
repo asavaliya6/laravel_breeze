@@ -11,6 +11,8 @@ use App\Http\Controllers\RealuserController;
 use App\Http\Controllers\RealpostController;
 use App\Http\Controllers\RealroleController;
 use App\Http\Controllers\UuidpostController;
+use App\Http\Controllers\Api\V1\UserController as V1UserController;
+use App\Http\Controllers\Api\V2\UserController as V2UserController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -65,3 +67,11 @@ Route::get('/uuidposts', [UuidpostController::class, 'index']);
 Route::get('/uuidposts/{uuid}', [UuidpostController::class, 'show']);
 Route::put('/uuidposts/{uuid}', [UuidpostController::class, 'update']);
 Route::delete('/uuidposts/{uuid}', [UuidpostController::class, 'destroy']);
+
+Route::prefix('v1')->group(function () {
+    Route::get('/users', [V1UserController::class, 'index']);
+});
+
+Route::prefix('v2')->group(function () {
+    Route::get('/users', [V2UserController::class, 'index']);
+});
