@@ -31,21 +31,28 @@ use App\Http\Controllers\ChartJSController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TwoFactorCodeController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified', 'two.factor'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('verify',[TwoFactorCodeController::class,'verify'])->name('verify');
+Route::get('verify/resend',[TwoFactorCodeController::class,'resend'])->name('verify.resend');
+Route::post('verify',[TwoFactorCodeController::class,'verifyPost'])->name('verify.post');
 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');

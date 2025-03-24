@@ -759,3 +759,12 @@ foreach ($users as $user) {
 
 1) GET http://127.0.0.1:8000/api/v1/users   -->v1
 2) GET http://127.0.0.1:8000/api/v2/users   -->v2
+
+## 2 Factor Authentication (OTP Login)
+
+- Create Migration `php artisan make:migration add_two_factor_code_columns`
+- Create Controller `php artisan make:controller TwoFactorCodeController`
+- Create Middleware `php artisan make:middleware TwoFactorMiddleware`
+- Create Notifications `php artisan make:Notification TwoFactorCodeNotification`
+- Create View `verify.blade.php`
+- Create Route, update model - User.php and update controller Auth/AuthenticatedSessionController

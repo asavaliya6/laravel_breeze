@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Notifications\TwoFactorCodeNotification;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -22,32 +21,44 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->authenticate();
+        $credentials = $request->only('email', 'password');
 
-        $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        $url = "dashboard";
+            // Generate OTP when logging in
+            $user = $request->user();
+            if (!$user->two_factor_verified) {
+                $user->regenerateTwoFactorCode();
+                $user->notify(new TwoFactorCodeNotification());
+                return redirect()->route('verify');
+            }
 
-        if ($request->user()->role == "admin") {
-            $url = "admin/dashboard";
-        } else if($request->user()->role == "agent"){
-            $url = "agent/dashboard";
+            // Redirect based on role
+            if ($user->role == 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role == 'agent') {
+                return redirect()->route('agent.dashboard');
+            }
+
+            return redirect()->intended('dashboard');
         }
 
-        return redirect()->intended($url);
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**
      * Destroy an authenticated session.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(Request $request)
     {
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
         return redirect('/');
