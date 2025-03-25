@@ -32,7 +32,7 @@ use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TwoFactorCodeController;
-
+use App\Http\Controllers\LocationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -61,6 +61,10 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
 Route::middleware(['auth', 'role:agent'])->group(function(){
     Route::get('/agent/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
 });
+
+Route::get('/locations', [LocationController::class, 'index']);
+Route::post('/get-states', [LocationController::class, 'getStates'])->name('getStates');
+Route::post('/get-cities', [LocationController::class, 'getCities'])->name('getCities');
 
 Route::get('send-mail', [MailController::class, 'index']);
 Route::get('user-notify', [UserController::class, 'index']);

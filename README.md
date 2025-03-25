@@ -768,3 +768,11 @@ foreach ($users as $user) {
 - Create Notifications `php artisan make:Notification TwoFactorCodeNotification`
 - Create View `verify.blade.php`
 - Create Route, update model - User.php and update controller Auth/AuthenticatedSessionController
+
+## Ajax dropdown 
+
+- Create Migration `php artisan make:migration create_locations_tables`
+- Create Controller `php artisan make:controller LocationController`
+- Create Model `php artisan make:model Country`  `php artisan make:model state` `php artisan make:model city`
+- Create View `locations\index` 
+- Create Seeder `php artisan make:seeder LocationSeeder` and run seeder `php artisan db:seed --class=LocationSeeder` and Add route 
