@@ -15,7 +15,7 @@
       
 <div class="container">
     <div class="card mt-5">
-        <h2 class="card-header"></i>Ajax CRUD</h2>
+        <h2 class="card-header"></i>Ajax Yajra CRUD</h2>
         <div class="card-body">
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
                 <a class="btn btn-success btn-sm" href="javascript:void(0)" id="createNewAjaxproduct"></i> Create New Ajaxproduct</a>

@@ -50,6 +50,11 @@
                         {{ __('Charts') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('all')" :active="request()->routeIs('all')">
+                        {{ __('All') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -153,8 +158,13 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('charts')" :active="request()->routeIs('posts.charts')">
+            <x-responsive-nav-link :href="route('charts')" :active="request()->routeIs('charts')">
                 {{ __('Charts') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="route('all')" :active="request()->routeIs('all')">
+                {{ __('All') }}
             </x-responsive-nav-link>
         </div>
 

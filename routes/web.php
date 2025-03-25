@@ -65,16 +65,19 @@ Route::middleware(['auth', 'role:agent'])->group(function(){
 });
 
 // Ajax Dropdown
-Route::get('/locations', [LocationController::class, 'index']);
+Route::get('/locations', [LocationController::class, 'index'])->name('locations.index');
 Route::post('/get-states', [LocationController::class, 'getStates'])->name('getStates');
 Route::post('/get-cities', [LocationController::class, 'getCities'])->name('getCities');
 
+// Ajax CRUD Operation using Yajra datatables
+Route::resource('ajaxproducts', AjaxproductController::class);
+
 // Send Mail and Send Notification
-Route::get('send-mail', [MailController::class, 'index']);
-Route::get('user-notify', [UserController::class, 'index']);
+Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
+Route::get('user-notify', [UserController::class, 'notification'])->name('user-notify');
 
 // Get User Location using IP Address
-Route::get('address', [AddressController::class, 'index']);
+Route::get('address', [AddressController::class, 'index'])->name('address.index');
 
 // Image Upload with CRUD with Toastr Notification
 Route::resource('posts', PostController::class);
@@ -98,7 +101,7 @@ Route::middleware(['setlocale'])->group(function () {
 });
 
 // Scout elastic search with Algolia driver and Confirm Box Before Delete Record from Database
-Route::get('users', [UserController::class, 'index']);
+Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 // charts
@@ -108,22 +111,13 @@ Route::get('piechart', [PiechartController::class, 'index'])->name('piechart');
 Route::get('graphchart', [GraphchartController::class, 'index'])->name('graphchart');
 
 // Generate Thumbnail Image and Add Blur Effect to Image
-Route::get('image-upload', [ImageController::class, 'index']);
+Route::get('image-upload', [ImageController::class, 'index'])->name('image.index');
 Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
-
-// Change Date Format
-Route::get('/date-format', [DateController::class, 'changeDateFormat']);
-Route::get('/date-blade', [DateController::class, 'showDateInBlade']);
 
 // Model Events
 Route::get('/create-note', [NoteController::class, 'create']);
 Route::get('/update-note/{id}', [NoteController::class, 'update']);
 Route::get('/delete-note/{id}', [NoteController::class, 'delete']);
-
-// Get,Set and Delete Cookie
-Route::get('/set-cookie', [CookieController::class, 'setCookie']);
-Route::get('/get-cookie', [CookieController::class, 'getCookie']);
-Route::get('/delete-cookie', [CookieController::class, 'deleteCookie']);
 
 // Display Image from Storage Folder
 Route::get('/upload', [ImageUploadController::class, 'showUploadForm'])->name('image.form');
@@ -136,11 +130,19 @@ Route::get('storeproducts/search', [StoreproductController::class, 'search']);
 // Load More Data on Scroll Event
 Route::get('loads',[LoadController::class,'index'])->name('loads.index');
 
-// Ajax CRUD Operation using Yajra datatables
-Route::resource('ajaxproducts', AjaxproductController::class);
-
 // Generate PDF File using DomPDF Package
-Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generatePDF');
+
+Route::view('all','all')->name('all');
+
+// Change Date Format
+Route::get('/date-format', [DateController::class, 'changeDateFormat'])->name('date-format');
+Route::get('/date-blade', [DateController::class, 'showDateInBlade'])->name('date-blade');
+
+// Get,Set and Delete Cookie
+Route::get('/set-cookie', [CookieController::class, 'setCookie']);
+Route::get('/get-cookie', [CookieController::class, 'getCookie']);
+Route::get('/delete-cookie', [CookieController::class, 'deleteCookie']);
 
 // Custom traits
 Route::get('/traitpost', [TraitpostController::class, 'index']);
