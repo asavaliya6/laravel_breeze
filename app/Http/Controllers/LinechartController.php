@@ -7,7 +7,7 @@ use App\Models\User;
 use DB;
 use Illuminate\View\View;
 
-class HighchartController extends Controller
+class LinechartController extends Controller
 {
     public function index(): View
     {
@@ -22,7 +22,7 @@ class HighchartController extends Controller
             $monthlyData[$month] = $count;
         }
 
-        return view('chart', ['users' => array_values($monthlyData)]);
+        return view('linechart', ['users' => array_values($monthlyData)]);
     }
 
 }

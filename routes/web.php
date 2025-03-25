@@ -13,7 +13,7 @@ use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ImageController;
-use App\Http\Controllers\HighchartController;
+use App\Http\Controllers\LinechartController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\CookieController;
@@ -22,12 +22,11 @@ use App\Http\Controllers\StoreproductController;
 use App\Http\Controllers\LoadController;
 use App\Http\Controllers\AjaxproductController;
 use App\Http\Controllers\PDFController;
-use App\Http\Controllers\ApexchartsController;
-use App\Http\Controllers\GoogleChartController;
+use App\Http\Controllers\PiechartController;
 use App\Http\Controllers\TraitpostController;
 use App\Http\Controllers\WordpressPostController;
 use App\Http\Controllers\ShopifyPostController;
-use App\Http\Controllers\ChartJSController;
+use App\Http\Controllers\GraphchartController;
 use App\Http\Controllers\PaypalController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\PaymentController;
@@ -38,6 +37,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// auth
 Route::middleware(['auth', 'verified', 'two.factor'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -50,10 +50,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// OTP Login
 Route::get('verify',[TwoFactorCodeController::class,'verify'])->name('verify');
 Route::get('verify/resend',[TwoFactorCodeController::class,'resend'])->name('verify.resend');
 Route::post('verify',[TwoFactorCodeController::class,'verifyPost'])->name('verify.post');
 
+// Multi Auth 
 Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 });
@@ -62,22 +64,31 @@ Route::middleware(['auth', 'role:agent'])->group(function(){
     Route::get('/agent/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
 });
 
+// Ajax Dropdown
 Route::get('/locations', [LocationController::class, 'index']);
 Route::post('/get-states', [LocationController::class, 'getStates'])->name('getStates');
 Route::post('/get-cities', [LocationController::class, 'getCities'])->name('getCities');
 
+// Send Mail and Send Notification
 Route::get('send-mail', [MailController::class, 'index']);
 Route::get('user-notify', [UserController::class, 'index']);
+
+// Get User Location using IP Address
 Route::get('address', [AddressController::class, 'index']);
+
+// Image Upload with CRUD with Toastr Notification
 Route::resource('posts', PostController::class);
 
+// Calender Event
 Route::controller(FullCalenderController::class)->group(function(){
-    Route::get('fullcalender', 'index');
-    Route::post('fullcalenderAjax', 'ajax');
+    Route::get('fullcalender', 'index')->name('fullcalender');
+    Route::post('fullcalenderAjax', 'ajax')->name('fullcalender.ajax');
 });
 
-Route::get('datatables', [DatatableController::class, 'index'])->name('datatables.index');
+// Yajra Datable
+Route::get('datatables', [DatatableController::class, 'index'])->name('datatables');
 
+// Localization
 Route::middleware(['setlocale'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -86,48 +97,59 @@ Route::middleware(['setlocale'])->group(function () {
     Route::get('lang', [LanguageController::class, 'change'])->name("change.lang");
 });
 
+// Scout elastic search with Algolia driver and Confirm Box Before Delete Record from Database
 Route::get('users', [UserController::class, 'index']);
 Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
+// charts
+Route::view('charts', 'charts')->name('charts');
+Route::get('linechart', [LinechartController::class, 'index'])->name('linechart');
+Route::get('piechart', [PiechartController::class, 'index'])->name('piechart');
+Route::get('graphchart', [GraphchartController::class, 'index'])->name('graphchart');
+
+// Generate Thumbnail Image and Add Blur Effect to Image
 Route::get('image-upload', [ImageController::class, 'index']);
 Route::post('image-upload', [ImageController::class, 'store'])->name('image.store');
 
-Route::get('chart', [HighchartController::class, 'index']);
-
+// Change Date Format
 Route::get('/date-format', [DateController::class, 'changeDateFormat']);
 Route::get('/date-blade', [DateController::class, 'showDateInBlade']);
 
+// Model Events
 Route::get('/create-note', [NoteController::class, 'create']);
 Route::get('/update-note/{id}', [NoteController::class, 'update']);
 Route::get('/delete-note/{id}', [NoteController::class, 'delete']);
 
+// Get,Set and Delete Cookie
 Route::get('/set-cookie', [CookieController::class, 'setCookie']);
 Route::get('/get-cookie', [CookieController::class, 'getCookie']);
 Route::get('/delete-cookie', [CookieController::class, 'deleteCookie']);
 
+// Display Image from Storage Folder
 Route::get('/upload', [ImageUploadController::class, 'showUploadForm'])->name('image.form');
 Route::post('/upload', [ImageUploadController::class, 'uploadImage'])->name('image.upload');
 
+// Store JSON Format Data in Database
 Route::get('storeproducts/create', [StoreproductController::class, 'create']);
 Route::get('storeproducts/search', [StoreproductController::class, 'search']);
 
+// Load More Data on Scroll Event
 Route::get('loads',[LoadController::class,'index'])->name('loads.index');
 
+// Ajax CRUD Operation using Yajra datatables
 Route::resource('ajaxproducts', AjaxproductController::class);
 
+// Generate PDF File using DomPDF Package
 Route::get('generate-pdf', [PDFController::class, 'generatePDF']);
 
-Route::get('charts', [ApexchartsController::class, 'index']);
-
-Route::get('googlechart', [GoogleChartController::class, 'index']);
-
+// Custom traits
 Route::get('/traitpost', [TraitpostController::class, 'index']);
 
+// Interface
 Route::get('/post-wordpress', [WordpressPostController::class, 'index']);
 Route::get('/post-shopify', [ShopifyPostController::class, 'index']);
 
-Route::get('chartjs', [ChartJSController::class, 'index']);
-
+// Custom helper function
 Route::get('call-helper', function(){
   
     $mdY = convertYmdToMdy('2022-02-12');

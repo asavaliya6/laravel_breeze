@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Charts\MonthlyUsersChart;
 
-class ApexchartsController extends Controller
+class PiechartController extends Controller
 {
     /**
      * Write code on Method
@@ -14,6 +14,6 @@ class ApexchartsController extends Controller
      */
     public function index(MonthlyUsersChart $chart)
     {
-        return view('apexcharts', ['chart' => $chart->build()]);
+        return view('piechart', ['chart' => $chart->build()]);
     }
 }

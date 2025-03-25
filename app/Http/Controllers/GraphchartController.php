@@ -1,13 +1,13 @@
 <?php
   
 namespace App\Http\Controllers;
-  
+    
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Models\User;
 use DB;
-use Illuminate\View\View;
-  
-class GoogleChartController extends Controller
+    
+class GraphchartController extends Controller
 {
     public function index(): View
     {
@@ -15,7 +15,10 @@ class GoogleChartController extends Controller
                     ->whereYear('created_at', date('Y'))
                     ->groupBy(DB::raw("Month(created_at)"))
                     ->pluck('count', 'month_name');
-            
-        return view('googlechart', compact('users'));
+ 
+        $labels = $users->keys();
+        $data = $users->values();
+              
+        return view('graphchart', compact('labels', 'data'));
     }
 }
