@@ -33,6 +33,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TwoFactorCodeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\QrProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -87,6 +88,8 @@ Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.ind
 Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
 Route::post('/invoices', [InvoiceController::class, 'store'])->name('invoices.store');
 Route::get('/invoices/{id}/pdf', [InvoiceController::class, 'downloadPDF'])->name('invoices.downloadPDF');
+
+Route::resource('qr_products', QrProductController::class);
 
 // Calender Event
 Route::controller(FullCalenderController::class)->group(function(){

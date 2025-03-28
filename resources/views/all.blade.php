@@ -45,6 +45,7 @@
                         <a href="{{ route('address.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">IP Address</a>
                         <a href="{{ route('generatePDF') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Generate PDF</a>
                         <a href="{{ route('invoices.create') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Invoice PDF</a>
+                        <a href="{{ route('qr_products.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">QR Code</a>
                     </div>
                 </div>
             </div>

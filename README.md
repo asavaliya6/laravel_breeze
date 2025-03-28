@@ -776,3 +776,10 @@ foreach ($users as $user) {
 
 - Create Model,Migration and Controller `php artisan make:model Invoice` `php artisan make:migration create_invoices_table --create=invoices` `php artisan migrate` `php artisan make:controller InvoiceController`
 - Create Views => invoices/create.blade.php, invoices/index.blade.php, invoices/pdf.blade.php and update route
+
+## Generate QR Code 
+
+- Install Composer Package `composer require simplesoftwareio/simple-qrcode`
+- Create Model and Migration `php artisan make:model QrProduct` and `php artisan make:migration create_qr_products_table`
+- Create Controller `php artisan make:controller QrProductController`
+- Create View => qr_products/index.blade.php, qr_products/create.blade.php, qr_products/show.blade.php and Add Route
