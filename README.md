@@ -215,7 +215,6 @@ MAIL_FROM_NAME="${APP_NAME}"
 - Publish Configuration File ```php artisan vendor:publish --provider="Stevebauman\Location\LocationServiceProvider"```
 - Create Route => routes/web.php
 - Create Controller ```php artisan make:controller AddressController```
-
 - Create Blade File => resources/views/address.blade.php
 - Run App ```php artisan serve``` ```http://localhost:8000/address```
 
@@ -772,3 +771,8 @@ foreach ($users as $user) {
 - Create Model `php artisan make:model Country`  `php artisan make:model state` `php artisan make:model city`
 - Create View `locations\index` 
 - Create Seeder `php artisan make:seeder LocationSeeder` and run seeder `php artisan db:seed --class=LocationSeeder` and Add route 
+
+## Create Invoices and Generate PDF
+
+- Create Model,Migration and Controller `php artisan make:model Invoice` `php artisan make:migration create_invoices_table --create=invoices` `php artisan migrate` `php artisan make:controller InvoiceController`
+- Create Views => invoices/create.blade.php, invoices/index.blade.php, invoices/pdf.blade.php and update route

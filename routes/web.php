@@ -32,6 +32,7 @@ use App\Http\Controllers\StripeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\TwoFactorCodeController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\InvoiceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,6 +82,11 @@ Route::get('address', [AddressController::class, 'index'])->name('address.index'
 
 // Image Upload with CRUD with Toastr Notification
 Route::resource('posts', PostController::class);
+
+Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
+Route::get('/invoices/create', [InvoiceController::class, 'create'])->name('invoices.create');
+Route::post('/invoices', [InvoiceController::class, 'store'])->name('invoices.store');
+Route::get('/invoices/{id}/pdf', [InvoiceController::class, 'downloadPDF'])->name('invoices.downloadPDF');
 
 // Calender Event
 Route::controller(FullCalenderController::class)->group(function(){
