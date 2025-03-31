@@ -35,8 +35,6 @@ class QrProductController extends Controller
     public function show($id)
     {
         $qrProduct = QrProduct::findOrFail($id);
-
-        // Generate QR code dynamically
         $qrCode = QrCode::size(200)->generate($qrProduct->qr_code);
 
         return view('qr_products.show', compact('qrProduct', 'qrCode'));

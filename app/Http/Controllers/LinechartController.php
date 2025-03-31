@@ -11,7 +11,9 @@ class LinechartController extends Controller
 {
     public function index(): View
     {
-        $users = User::select(DB::raw("COUNT(*) as count"), DB::raw("MONTH(created_at) as month"))
+        $users = User::select(
+                    DB::raw("COUNT(*) as count"), 
+                    DB::raw("MONTH(created_at) as month"))
                     ->whereYear('created_at', date('Y'))
                     ->groupBy(DB::raw("MONTH(created_at)"))
                     ->orderBy(DB::raw("MONTH(created_at)"))

@@ -21,7 +21,7 @@ class StripeController extends Controller
                     'product_data' => [
                         'name' => 'Phone',
                     ],
-                    'unit_amount' => 10 * 100, // Convert to cents
+                    'unit_amount' => 10 * 100, 
                 ],
                 'quantity' => 1,
             ]],
@@ -30,7 +30,6 @@ class StripeController extends Controller
             'cancel_url' => route('stripe.cancel'),
         ]);
 
-        // Store payment details in session (optional)
         session()->put('product_name', 'Phone');
         session()->put('quantity', 1);
 
@@ -39,7 +38,6 @@ class StripeController extends Controller
 
     public function success()
     {
-        // Store successful payment in DB
         $payment = new StripePayment();
         $payment->product_name = session()->get('product_name');
         $payment->quantity = session()->get('quantity');
