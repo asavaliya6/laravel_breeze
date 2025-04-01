@@ -783,3 +783,8 @@ foreach ($users as $user) {
 - Create Model and Migration `php artisan make:model QrProduct` and `php artisan make:migration create_qr_products_table`
 - Create Controller `php artisan make:controller QrProductController`
 - Create View => qr_products/index.blade.php, qr_products/create.blade.php, qr_products/show.blade.php and Add Route
+
+## Multiple Image Upload
+
+- Create Migration and Model `php artisan make:migration create_images_table` `php artisan migrate` `php artisan make:model Image`
+- Create Controller and view `php artisan make:controller MultipleimageController` `Multipleimage.blade.php` and add route

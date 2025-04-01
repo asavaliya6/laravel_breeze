@@ -34,6 +34,7 @@ use App\Http\Controllers\TwoFactorCodeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\QrProductController;
+use App\Http\Controllers\MultipleimageController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -142,7 +143,12 @@ Route::get('loads',[LoadController::class,'index'])->name('loads.index');
 // Generate PDF File using DomPDF Package
 Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generatePDF');
 
+// all file
 Route::view('all','all')->name('all');
+
+// multiple image upload
+Route::get('image-upload', [MultipleimageController::class, 'index']);
+Route::post('image-upload', [MultipleimageController::class, 'store'])->name('image.store');
 
 // Change Date Format
 Route::get('/date-format', [DateController::class, 'changeDateFormat'])->name('date-format');
