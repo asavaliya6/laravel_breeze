@@ -12,19 +12,16 @@
         <h3 class="card-header p-3">Multiple Image Upload</h3>
         <div class="card-body">
 
-            <!-- Display success message -->
             @if(session('success'))
                 <div class="alert alert-success" role="alert">
                     {{ session('success') }}
                 </div>
 
-                <!-- Display uploaded images -->
                 @foreach(session('images') as $image)
                     <img src="{{ asset('images/' . $image['name']) }}" width="300px" alt="Uploaded Image">
                 @endforeach
             @endif
-            
-            <!-- Image upload form -->
+
             <form action="{{ route('image.store') }}" method="POST" enctype="multipart/form-data" class="mt-2">
                 @csrf
        
