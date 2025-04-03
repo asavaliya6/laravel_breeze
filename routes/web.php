@@ -35,6 +35,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\QrProductController;
 use App\Http\Controllers\MultipleimageController;
+use App\Http\Controllers\QuillController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -149,6 +150,10 @@ Route::view('all','all')->name('all');
 // multiple image upload
 Route::get('image-upload', [MultipleimageController::class, 'index']);
 Route::post('image-upload', [MultipleimageController::class, 'store'])->name('image.store');
+
+// Quill Rich Text Editor
+Route::get('quill-editor', [QuillController::class, 'index']);
+Route::post('quill-editor', [QuillController::class, 'store'])->name('quill.store');
 
 // Change Date Format
 Route::get('/date-format', [DateController::class, 'changeDateFormat'])->name('date-format');

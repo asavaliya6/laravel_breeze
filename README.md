@@ -788,3 +788,7 @@ foreach ($users as $user) {
 
 - Create Migration and Model `php artisan make:migration create_images_table` `php artisan migrate` `php artisan make:model Image`
 - Create Controller and view `php artisan make:controller MultipleimageController` `Multipleimage.blade.php` and add route
+
+## Create quill rich text editor
+
+- Create Controller,View and route 
