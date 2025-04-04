@@ -76,6 +76,14 @@ Route::post('/get-cities', [LocationController::class, 'getCities'])->name('getC
 // Ajax CRUD Operation using Yajra datatables
 Route::resource('ajaxproducts', AjaxproductController::class);
 
+// Route for Select2 Ajax Search
+// Route to load the user search page
+Route::get('/usersearch', function () {
+    return view('usersearch');
+})->name('user.search.page');
+
+Route::get('/user-search', [UserController::class, 'searchUsers'])->name('user.search');
+
 // Send Mail and Send Notification
 Route::get('send-mail', [MailController::class, 'index'])->name('send-mail');
 Route::get('user-notify', [UserController::class, 'notification'])->name('user-notify');
@@ -148,8 +156,8 @@ Route::get('generate-pdf', [PDFController::class, 'generatePDF'])->name('generat
 Route::view('all','all')->name('all');
 
 // multiple image upload
-Route::get('image-upload', [MultipleimageController::class, 'index']);
-Route::post('image-upload', [MultipleimageController::class, 'store'])->name('image.store');
+Route::get('multipleimage-upload', [MultipleimageController::class, 'index'])->name('multipleimage.index');
+Route::post('multipleimage-upload', [MultipleimageController::class, 'store'])->name('multipleimage.store');
 
 // Quill Rich Text Editor
 Route::get('quill-editor', [QuillController::class, 'index']);

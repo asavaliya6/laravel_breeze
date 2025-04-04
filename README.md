@@ -792,3 +792,8 @@ foreach ($users as $user) {
 ## Create quill rich text editor
 
 - Create Controller,View and route 
+
+## Select2 ajax autocomplete search
+
+- import select2 library otherwise install `npm install select2`
+- create blade and update route and controller

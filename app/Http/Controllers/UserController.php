@@ -33,4 +33,15 @@ class UserController extends Controller
   
         dd('Done');
     }
+
+    public function searchUsers(Request $request)
+    {
+        $query = $request->input('q');
+
+        $users = User::where('name', 'LIKE', "%{$query}%")
+            ->limit(10)
+            ->get(['id', 'name']);
+
+        return response()->json($users);
+    }
 }

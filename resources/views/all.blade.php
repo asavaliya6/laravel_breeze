@@ -8,6 +8,7 @@
                         <a href="{{ route('ajaxproducts.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Ajax Yajra</a>
                         <a href="{{ route('locations.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Ajax Dropdown</a>
                         <a href="{{ route('loads.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Ajax Scroll</a>
+                        <a href="{{ route('user.search.page') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Select2 Ajax Search</a>
                     </div>
                 </div>
             </div>
@@ -32,6 +33,7 @@
                     <div class="d-flex justify-content-center gap-6 flex-wrap"> 
                         <a href="{{ route('users.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Users Event</a>
                         <a href="{{ route('image.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Images Event</a>
+                        <a href="{{ route('multipleimage.index') }}" class="btn btn-primary btn-lg px-6 py-4 text-white">Multiple Images Upload</a>
                     </div>
                 </div>
             </div>
