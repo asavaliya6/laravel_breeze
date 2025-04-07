@@ -797,3 +797,8 @@ foreach ($users as $user) {
 
 - import select2 library otherwise install `npm install select2`
 - create blade and update route and controller
+
+## Filter Columns
+
+- Create Migration and Model `php artisan make:Model Role -m`
+- Update Migration,Model,Controller and View
